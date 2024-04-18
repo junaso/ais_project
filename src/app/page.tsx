@@ -8,11 +8,13 @@ type Props = {
   children: React.ReactNode
 }
 
+
 const Page = ({ title, children }: Props) => {
   return (
     <>
       <title>{`${title} | 入室管理システム`}</title>
       <Provider store={store}>
+
         {children}
       </Provider>
     </>

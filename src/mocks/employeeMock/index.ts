@@ -11,8 +11,8 @@ export const mockData: EmployeeList={
             empFirstName : "情報",
             empLastNameKana : "アジア",
             empFirstNameKana : "ジョウホウ",
-            empLevel : "00:00:00",
-            empTel : "00:00:00",
+            empLevel : "10",
+            empTel : "070-1234-5678",
             empMail : "asdf@ais-info.co.jp"
         },
         {
@@ -23,8 +23,8 @@ export const mockData: EmployeeList={
             empFirstName : "情報",
             empLastNameKana : "アジア",
             empFirstNameKana : "ジョウホウ",
-            empLevel : "00:00:00",
-            empTel : "00:00:00",
+            empLevel : "15",
+            empTel : "070-9874-0000",
             empMail : "asdf@ais-info.co.jp"
         },
         {
@@ -36,7 +36,7 @@ export const mockData: EmployeeList={
             empLastNameKana : "アジア",
             empFirstNameKana : "ジョウホウ",
             empLevel : "00:00:00",
-            empTel : "00:00:00",
+            empTel : "070-2222-8888",
             empMail : "asdf@ais-info.co.jp"
         }
     ]
