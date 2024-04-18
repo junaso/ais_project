@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'redux/store'
 const useEmployee = () => {
   const dispatch = useDispatch()
   const employeeState = useSelector(employeeSelector)
-  const { result } = employeeState
+  const { employeeList } = employeeState
 
   const onSearchEmployeeList = async () => {
     dispatch(fetchEmployeeList())
   }
 
-  return { onSearchEmployeeList, result }
+  return { onSearchEmployeeList, employeeList }
 }
 
 export default useEmployee
