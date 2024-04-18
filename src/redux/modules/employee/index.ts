@@ -2,14 +2,14 @@ import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { RootState } from 'redux/store'
 import { API, apiPath } from 'constant/api'
 
-import type { Employee } from 'types/employee'
+import type { Employee, EmployeeList } from 'types/employee'
 import { api } from 'utill/axios'
 
   export const fetchEmployeeList = createAsyncThunk('fetchEmployeeList', async () => {
     try {
       
       const response = await api.get('/employees');
-      return response.data.result
+      return response.data
 
     } catch (error) {
       console.error('Error fetching data:', error)
@@ -18,8 +18,8 @@ import { api } from 'utill/axios'
   })
 
 
-  const initialState: Employee = {
-    result: '',
+  const initialState: EmployeeList = {
+    employeeList: []
   }
   
   export const employeeSlice = createSlice({
@@ -28,11 +28,12 @@ import { api } from 'utill/axios'
     reducers: {},
     extraReducers: (builder) => {
       builder
-        .addCase(fetchEmployeeList.fulfilled, (state, action: PayloadAction<string>) => {
-          state.result = action.payload
+        .addCase(fetchEmployeeList.fulfilled, (state, action: PayloadAction<EmployeeList>) => {
+          state.employeeList = action.payload.employeeList
         })
         .addCase(fetchEmployeeList.rejected, (state) => {
-          state.result = ''
+
+          state.employeeList = []
         })
     },
   })
