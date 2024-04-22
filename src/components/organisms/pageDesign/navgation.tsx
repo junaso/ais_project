@@ -1,39 +1,73 @@
-import React from "react";
+'use client'
+import React from 'react';
+import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import Settings from '@mui/icons-material/Settings';
+import Logout from '@mui/icons-material/Logout';
+import '../../../style/navgation.css';
 
-// nav
-const Navgation = () => {
+export default function Navgation() {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <>
-      <div>
-        <nav className="navbar navbar-expand-sm mb-5 mt-2">
-          <div className="container-fluid">
-            <div className="d-flex align-items-center">
-              <img src="/img/BI.png" alt="BI" width={80} height={50} />
-              <p className="navbar-brand m-0 ms-2">入室管理システム</p>
-            </div>
-
-            <div className="justify-content-end">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Home</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">System</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Mypage</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Login</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </>
-  )
+    <React.Fragment>
+      <Box className="nav-container">
+        <div className="profile-section">
+          <img src="/img/BI.png" alt="Profile Image" className="profile-image" />
+          <Typography className="title">亜細亜情報システム</Typography>
+        </div>
+        <Tooltip title="Account settings">
+          <IconButton
+            onClick={handleClick}
+            size="small"
+            className="account-button"
+            aria-controls={open ? 'account-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+          >
+            <Avatar>M</Avatar>
+          </IconButton>
+        </Tooltip>
+      </Box>
+      <Menu
+        anchorEl={anchorEl}
+        id="account-menu"
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        PaperProps={{
+          elevation: 0,
+          className: 'menu',
+        }}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+      >
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <Settings fontSize="small" />
+          </ListItemIcon>
+          Settings
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Logout
+        </MenuItem>
+      </Menu>
+    </React.Fragment>
+  );
 }
-
-export default Navgation
