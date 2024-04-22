@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { ReactNode } from 'react';
+import 'style/stepIndicator.css';
 
 interface StepIndicatorProps {
   icon: ReactNode; // ReactNode type 指定

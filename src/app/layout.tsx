@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Navgation from "components/organisms/pageDesign/navgation";
-import SideCategory from "components/organisms/pageDesign/sideCategory";
 import "./globals.css";
 import RegistationForm from "components/organisms/pageDesign/registationform";
-import DottedConnector from "components/organisms/pageDesign/stepper";
+import DottedConnector from "components/organisms/pageDesign/dottedConnector";
 import { Box } from "@mui/material";
 
 

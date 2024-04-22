@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import '../../../style/navgation.css';
+import 'style/navgation.css';
 
 export default function Navgation() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
