@@ -1,11 +1,10 @@
 'use client'
-// DottedConnector.jsx
 
 import * as React from 'react';
 import { Stepper, Step, StepLabel, Typography } from '@mui/material';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
-import StepIndicator from './stepIndicator';
+import StepIndicator from './StepIndicator';
 import 'style/dottedConnector.css';
 import 'style/stepIndicator.css';
 

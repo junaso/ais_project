@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import RegistationForm from "components/organisms/pageDesign/registationform";
-import DottedConnector from "components/organisms/pageDesign/dottedConnector";
+import RegistationForm from "components/organisms/pageDesign/Registationform";
+import DottedConnector from "components/organisms/pageDesign/DottedConnector";
 import { Box } from "@mui/material";
 
 
