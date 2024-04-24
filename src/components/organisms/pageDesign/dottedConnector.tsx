@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react';
+import React from 'react';
 import { Stepper, Step, StepLabel, Typography } from '@mui/material';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
@@ -8,7 +8,7 @@ import StepIndicator from './StepIndicator';
 import 'style/dottedConnector.css';
 import 'style/stepIndicator.css';
 
-export default function DottedConnector() {
+const DottedConnector = () => {
   return (
     <Stepper className="stepper-container">
       <Step completed>
@@ -66,3 +66,5 @@ export default function DottedConnector() {
     </Stepper>
   );
 }
+
+export default DottedConnector;
