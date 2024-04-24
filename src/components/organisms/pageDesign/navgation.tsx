@@ -4,7 +4,7 @@ import { Logout, Settings } from "@mui/icons-material"
 import { Avatar, Box, IconButton, ListItemIcon, Menu, MenuItem, Tooltip, Typography } from "@mui/material"
 import React from "react"
 import Image from 'next/image'
-import 'style/navgation.css'
+import 'styles/navgation.css'
 
 const Navgation = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
