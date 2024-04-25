@@ -1,4 +1,4 @@
-import { Employee, EmployeeList } from 'types/employee';
+import { EmployeeList } from 'types/employee'
 
 export const mockData: EmployeeList={ 
 
@@ -40,4 +40,4 @@ export const mockData: EmployeeList={
             empMail : "asdf@ais-info.co.jp"
         }
     ]
- };
+ }

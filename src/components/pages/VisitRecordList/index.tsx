@@ -10,6 +10,7 @@ const VisitRecordList = () => {
   const { visitRecordList, onSearchVisitRecordList } = useVisitRecord()
   useEffect(() => {
     onSearchVisitRecordList()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
