@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Navgation from "components/organisms/pageDesign/navgation";
-import SideCategory from "components/organisms/pageDesign/sideCategory";
 import "./globals.css";
+import RegistationForm from "components/organisms/pageDesign/Registationform";
+import DottedConnector from "components/organisms/pageDesign/DottedConnector";
+import { Box } from "@mui/material";
 
 
 
@@ -23,27 +24,15 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <meta charSet="utf-8"></meta>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossOrigin="anonymous" />
       </head>
 
       <body className={inter.className}>
-        {/* navigation */}
-        <div className="container-fluid">
-          <div>
-            <Navgation />
-          </div>
-          <div className="row">
-            {/* SideCategory */}
-            <div className="col-2">
-              <SideCategory />
-            </div>
-            {/* DataTable */}
-            <div className="col-10">
-              {children}
-            </div>
-          </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossOrigin="anonymous" />
+          <Box>
+            {/* <Navgation /> */}
+            {/* Registation Form */}
+            <DottedConnector />
+            <RegistationForm />
+          </Box>
       </body>
     </html>
   );

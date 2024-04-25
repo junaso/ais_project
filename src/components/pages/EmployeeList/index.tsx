@@ -1,6 +1,6 @@
 'use client'
 
-import Table from "components/organisms/Table"
+import Table from "components/organisms/InformationTable"
 import { useEmployee } from "hooks"
 import { useEffect } from "react"
 import { Employee } from "types/employee"
