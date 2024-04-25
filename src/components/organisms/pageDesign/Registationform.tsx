@@ -1,6 +1,6 @@
-import React from 'react';
-import { Button, Input, TextField, Typography } from '@mui/material';
-import { Box } from '@mui/material';
+import React from 'react'
+import { Button, Input, TextField, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 
 const InputVariants = () => {
     return (
@@ -25,7 +25,7 @@ const InputVariants = () => {
                 </Box>
             </form>
         </>
-    );
-};
+    )
+}
 
-export default InputVariants;
+export default InputVariants

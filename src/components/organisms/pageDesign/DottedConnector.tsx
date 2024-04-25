@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react';
-import { Stepper, Step, StepLabel, Typography } from '@mui/material';
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
-import StepIndicator from './StepIndicator';
-import 'styles/stepIndicator.css';
+import React from 'react'
+import { Stepper, Step, StepLabel, Typography } from '@mui/material'
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
+import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded'
+import StepIndicator from './StepIndicator'
+import 'styles/stepIndicator.css'
 
 const DottedConnector = () => {
   return (
@@ -63,7 +63,7 @@ const DottedConnector = () => {
         </StepLabel>
       </Step>
     </Stepper>
-  );
+  )
 }
 
-export default DottedConnector;
+export default DottedConnector
