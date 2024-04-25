@@ -1,6 +1,6 @@
 'use client'
 
-import Table from "components/organisms/Table"
+import InformationTable from "components/organisms/InformationTable"
 import { useVisitRecord } from "hooks"
 import { useEffect } from "react"
 import { VisitRecord } from "types/visitRecord"
@@ -17,7 +17,7 @@ const VisitRecordList = () => {
        return (
             <>
           {visitRecordList.length > 0 && (
-            <Table<VisitRecord> list={visitRecordList}></Table>
+            <InformationTable<VisitRecord> list={visitRecordList}></InformationTable>
           )}
           </>
         )
