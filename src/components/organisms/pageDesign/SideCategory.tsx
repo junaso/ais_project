@@ -1,10 +1,6 @@
-import React from "react";
+import React from "react"
 
-type ListProps = {
-    children?: React.ReactNode;
-}
-
-const SideCategory = ({ children }: ListProps) => {
+const SideCategory = () => {
     return (
         <div className="container text-center" id="sideCategory">
             <nav className="nav flex-column">
@@ -16,7 +12,7 @@ const SideCategory = ({ children }: ListProps) => {
                 </div>
             </nav>
         </div>
-    );
+    )
 }
 
-export default SideCategory;
+export default SideCategory

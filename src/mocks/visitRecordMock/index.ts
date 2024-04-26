@@ -1,4 +1,4 @@
-import { VisitRecord, VisitRecordList } from "types/visitRecord";
+import { VisitRecordList } from "types/visitRecord"
 
 export const visitRecordmockData: VisitRecordList={ 
     visitRecordList : [
@@ -14,4 +14,4 @@ export const visitRecordmockData: VisitRecordList={
             checkOut : "00:00:00"
         }
     ]
-};
+}

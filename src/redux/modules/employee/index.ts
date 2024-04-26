@@ -1,14 +1,13 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { RootState } from 'redux/store'
-import { API, apiPath } from 'constant/api'
 
-import type { Employee, EmployeeList } from 'types/employee'
+import type { EmployeeList } from 'types/employee'
 import { api } from 'utill/axios'
 
   export const fetchEmployeeList = createAsyncThunk('fetchEmployeeList', async () => {
     try {
       
-      const response = await api.get('/employees');
+      const response = await api.get('/employees')
       return response.data
 
     } catch (error) {

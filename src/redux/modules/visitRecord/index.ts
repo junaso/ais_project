@@ -1,6 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { RootState } from 'redux/store'
-import { API, apiPath } from 'constant/api'
 
 import type { VisitRecordList } from 'types/visitRecord'
 import { api } from 'utill/axios'
@@ -8,7 +7,7 @@ import { api } from 'utill/axios'
   export const fetchVisitRecordList = createAsyncThunk('fetchVisitRecordList', async () => {
     try {
       
-      const response = await api.get('/visitRecords');
+      const response = await api.get('/visitRecords')
       return response.data
 
     } catch (error) {

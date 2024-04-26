@@ -1,0 +1,32 @@
+stages:
+  - test
+  - build
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+lint_job:
+  stage: test
+  image: node:20-alpine
+  tags:
+    - ais-visitor-register
+  script:
+    - npm ci
+    - npm run lint
+  only:
+    - merge_requests
+    - develop
+
+build_job:
+  stage: build
+  image: node:20-alpine
+  tags:
+    - ais-visitor-register
+  script:
+    - npm ci
+    - npm run build
+  only:
+    - merge_requests
+    - develop
