@@ -1,7 +1,7 @@
-import useEmployee from './useEmployee'
-import useVisitRecord from './useVisitRecord'
+// import useEmployee from './useEmployee'
+// import useVisitRecord from './useVisitRecord'
 
-export {
-  useEmployee,
-  useVisitRecord
-}
+// export {
+//   useEmployee,
+//   useVisitRecord
+// }

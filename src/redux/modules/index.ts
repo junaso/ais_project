@@ -1,11 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
-import employeeReducer from './employee'
-import visitRecordReducer from './visitRecord'
+import registrationReducer from './registrationForm'
 
 const rootReducer = combineReducers({
-  employee: employeeReducer,
-  visitRecord: visitRecordReducer
+  registrationForm: registrationReducer
 })
 
 export default rootReducer

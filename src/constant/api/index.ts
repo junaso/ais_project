@@ -1,6 +1,6 @@
 export const API = {
-  EMPLOYEE: {
-    LIST: '/employees',
+  REGISTRATION: {
+    POST: '/registration',
   }
 }
 
