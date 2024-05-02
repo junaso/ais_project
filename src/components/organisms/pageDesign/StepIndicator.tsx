@@ -1,12 +1,12 @@
 import React from 'react'
-import { styled, useTheme } from '@mui/material/styles'
+import { Theme, styled, useTheme } from '@mui/material/styles'
 
 interface StepIndicatorProps {
   stepNumber: number
   completed: boolean
 }
 
-const StepIndicatorRoot = styled('div')(({ theme, completed }: { theme: any, completed: boolean }) => ({
+const StepIndicatorRoot = styled('div')(({ theme, completed }: { theme: Theme, completed: boolean }) => ({
   width: '24px',
   height: '24px',
   borderRadius: '50%',
@@ -27,7 +27,7 @@ const CheckIcon = () => (
 )
 
 const StepIndicator = ({ stepNumber, completed }: StepIndicatorProps) => {
-  const theme = useTheme(); // テーマの情報を持って来る
+  const theme = useTheme() // テーマの情報を持って来る
   return (
     <StepIndicatorRoot theme={theme} completed={completed}>
       {completed ? <CheckIcon /> : stepNumber}

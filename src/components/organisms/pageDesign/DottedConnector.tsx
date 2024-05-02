@@ -1,13 +1,13 @@
 'use client'
 
 import React from 'react'
-import { Stepper, Step, StepLabel, Typography, createTheme } from '@mui/material'
+import { Stepper, Step, StepLabel, Typography } from '@mui/material'
 import StepIndicator from './StepIndicator'
 import 'styles/dottedConnector.css'
 
-const theme = createTheme({
+// const theme = createTheme({
   // テーマ設定
-});
+// })
 
   const DottedConnector = () => {
     const [completedSteps, setCompletedSteps] = React.useState(0)

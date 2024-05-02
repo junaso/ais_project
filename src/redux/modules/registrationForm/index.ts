@@ -48,7 +48,7 @@ export const registrationSlice = createSlice({
   initialState,
   reducers: {
     storeFormData: (state, action) => {
-      state.formData = action.payload; // 今までのデータをセーブ
+      state.formData = action.payload // 今までのデータをセーブ
     },
   },
   extraReducers: builder => {
@@ -67,7 +67,7 @@ export const registrationSlice = createSlice({
   },
 })
 
-export const { storeFormData } = registrationSlice.actions; // storeFormData action露出
+export const { storeFormData } = registrationSlice.actions // storeFormData action露出
 
 export default registrationSlice.reducer
 

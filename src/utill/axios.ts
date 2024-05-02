@@ -9,7 +9,7 @@ export const api = axios.create({
 })
 
 if (ENV === 'development') {
-    const mockAxios = new MockAdapter(api);
+    const mockAxios = new MockAdapter(api)
     mockAxios.onPost("/registration").reply(200, mockApiResponse)
 } 
 

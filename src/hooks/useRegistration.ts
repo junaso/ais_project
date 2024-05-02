@@ -19,7 +19,7 @@ const useRegistrationForm = () => {
     } catch (error) {
       console.error('Error submitting registration:', error)
     }
-  };
+  }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target

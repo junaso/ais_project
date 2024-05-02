@@ -1,28 +1,17 @@
 'use client'
-import React, { useEffect, useState } from 'react'
 import { Button, Input, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/material'
 import useRegistrationForm from 'hooks/useRegistration'
-import { mockFormData } from 'mocks/registrationMock'
 
-const initialFormData = mockFormData
-
+// const initialFormData = mockFormData
 const RegistrationForm = () => {
     const { formData, handleSubmit, handleChange } = useRegistrationForm()
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        setLoading(false)
-    }, []);
 
     const handleNext = () => {
         // 上位component連結
-        const nextPageData = {
-            formData, // 今のフォームデータ
-        };
         // ページ移動を処理するためのcallback関数を呼ぶ
         // onNextPage(nextPageData)
-    };
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -48,6 +37,7 @@ const RegistrationForm = () => {
 }
 
 export default RegistrationForm
+
 // 次のページへ連結してくれるコード
 // function onNextPage(nextPageData: { formData: { visName: string; companyName: string; tel: string; numberWith: number; } }) {
 //     throw new Error('Function not implemented.')
