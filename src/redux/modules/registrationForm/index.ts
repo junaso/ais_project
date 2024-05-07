@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { RootState } from 'redux/store'
-import { Registration } from 'types/Registration'
+import { VisitRecord } from 'types/VisitRecord'
 
 interface RegistrationState {
   status: 'idle' | 'loading' | 'succeeded' | 'failed'
   error: string | null
-  formData: Registration | null // 今までのデータをセーブ
+  formData: VisitRecord | null // 今までのデータをセーブ
 }
 
 const initialState: RegistrationState = {
@@ -17,7 +17,7 @@ const initialState: RegistrationState = {
 
 export const submitRegistration = createAsyncThunk(
   'registration/submitRegistration',
-  async (registrationData: Registration): Promise<Registration> => {
+  async (registrationData: VisitRecord): Promise<VisitRecord> => {
     try {
       // サーバーへの要請無しで、単純に状態をupdateする作業
       // Thunkが返還することは入力されたregistrationDataと同じ
@@ -31,12 +31,12 @@ export const submitRegistration = createAsyncThunk(
 
 export const mergeAndSubmitRegistration = createAsyncThunk(
   'registration/mergeAndSubmitRegistration',
-  async (registrationData: Registration, { getState }): Promise<void> => {
+  async (registrationData: VisitRecord, { getState }): Promise<void> => {
     try {
       const { formData } = (getState() as RootState).registrationForm // 現在の状態持ってくる
       const mergedData = { ...formData, ...registrationData } // 前のデータと新しいデータを合体する
       // サーバーへの要請
-      await axios.post('/registration', mergedData)
+      await axios.post('/visit-record', mergedData)
     } catch (error) {
       throw error
     }
@@ -44,7 +44,7 @@ export const mergeAndSubmitRegistration = createAsyncThunk(
 )
 
 export const registrationSlice = createSlice({
-  name: 'registration',
+  name: 'VisitRecord',
   initialState,
   reducers: {
     storeFormData: (state, action) => {

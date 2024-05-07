@@ -1,8 +1,14 @@
 export const mockFormData = {
-    visName: 'John Doe',
-    companyName: 'Example Inc.',
-    tel: '123-456-7890',
-    numberWith: 2,
+
+    visName:'John Doe',
+    companyName:'Example Inc.',
+    tel:'070-0000-1111',
+    numberWith:5,
+    empNo:10,
+    reason:'meeting',
+    checkIn:'00:00:00',
+    checkOut:'00:00:00'
+    
   }
   
   export const mockApiResponse = {

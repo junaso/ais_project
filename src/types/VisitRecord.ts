@@ -1,11 +1,11 @@
 export type VisitRecord = {
     // key : result
-    visNo:number,
+    visNo?:number,
     visName:string,
     companyName:string,
     tel:string,
     numberWith:number,
-    isHost:boolean,
+    isHost?:boolean,
     empNo:number,
     reason:string,
     checkIn:string,

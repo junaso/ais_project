@@ -4,10 +4,16 @@ const useRegistrationForm = () => {
   // const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    visName: '',
-    companyName: '',
-    tel: '',
-    numberWith: 0,
+
+    visName:'',
+    companyName:'',
+    tel:'',
+    numberWith:0,
+    empNo:0,
+    reason:'',
+    checkIn:'',
+    checkOut:''
+
   })
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

@@ -1,14 +1,12 @@
 export type Employee = {
-    empNo : number,
-    empId : string,
-    empPassword : string,
-    empLastName : string,
-    empFirstName : string,
-    empLastNameKana : string,
-    empFirstNameKana : string,
-    empLevel : string,
-    empTel : string,
-    empMail : string
+      empNo:number,
+      empId:string,
+      lastName:string,
+      firstName:string,
+      lastKanaName:string,
+      firstKanaName:string,
+      securityLevel:number,
+      mail:string
   }
 
   export type EmployeeList = {
