@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { RootState } from 'redux/store'
-import { Registration } from 'types/registration'
+import { Registration } from 'types/Registration'
 
 interface RegistrationState {
   status: 'idle' | 'loading' | 'succeeded' | 'failed'

@@ -1,6 +1,6 @@
 export const API = {
   REGISTRATION: {
-    POST: '/registration',
+    POST: '/visit-record',
   }
 }
 
