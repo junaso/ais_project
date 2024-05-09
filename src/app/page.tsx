@@ -14,7 +14,6 @@ const Page = ({ title, children }: Props) => {
     <>
       <title>{`${title} | 入室管理システム`}</title>
       <Provider store={store}>
-
         {children}
       </Provider>
     </>
