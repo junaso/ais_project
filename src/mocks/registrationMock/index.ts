@@ -1,4 +1,4 @@
-export const mockFormData = {
+export const visitRecordmockData = {
 
     visName:'John Doe',
     companyName:'Example Inc.',
