@@ -29,7 +29,7 @@ const AgreementForm: React.FC = () => {
         <br/>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         </Typography>
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" fontWeight="bold" component="div">
         ご来訪のお客様へ
         </Typography>
         <br/><br/>
