@@ -1,9 +1,8 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import RegistationForm from "components/organisms/pageDesign/RegistrationForm"
-import DottedConnector from "components/organisms/pageDesign/DottedConnector"
 import { Box } from "@mui/material"
+import AgreementForm from "components/organisms/pageDesign/AgreementForm"
 
 
 
@@ -28,8 +27,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
           <Box>
-            <DottedConnector />
-            <RegistationForm />
+          <AgreementForm/>
             {children}
           </Box>
       </body>
