@@ -1,7 +1,6 @@
-// import useEmployee from './useEmployee'
-// import useVisitRecord from './useVisitRecord'
+import useVisitRecord from './useVisitRecord'
 
-// export {
-//   useEmployee,
-//   useVisitRecord
-// }
+export {
+  useVisitRecord
+}
+

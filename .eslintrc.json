@@ -9,6 +9,7 @@
   ],
   "rules": {
     "@typescript-eslint/semi": ["error", "never"],  
-    "semi": ["error", "never"]
+    "semi": ["error", "never"],
+    "react/display-name": "off"
   }
 }
