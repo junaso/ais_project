@@ -3,26 +3,8 @@
 import { Button, Card, CardActions, CardContent, Typography } from "@mui/material"
 import 'styles/privacyPolicy.css'
 import Image from "next/image"
-import { useEffect, useState } from "react"
 
 const PrivacyPolicy = () => {
-
-    const [isScrolled, setIsScrolled] = useState(false)
-
-    useEffect(() => {
-        const handleScroll = () => {
-        if (window.pageYOffset > 0) {
-            setIsScrolled(true)
-        } else {
-            setIsScrolled(false)
-        }
-        }
-
-        window.addEventListener('scroll', handleScroll)
-        return () => {
-        window.removeEventListener('scroll', handleScroll)
-        }
-    }, [])
 
     return (
         <Card sx={{ minWidth: 275 }} className="container">
