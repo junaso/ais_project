@@ -10,8 +10,6 @@ export const createVisitRecord = createAsyncThunk(
   ) => {
     try {
       const response = await api.post(API.VISIT_RECORD, { visitRecord })
-      console.log("parameter",visitRecord)
-      console.log("response",response.data)
       return response.data
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'An error has occurred.')
@@ -40,17 +38,17 @@ const initialState: VisitRecordState = {
 
   steps: [
     {
-      label: 'INPUT',
+      label: '入力',
       error: false,
       completed: false,
     },
     {
-      label: 'REVIEW',
+      label: '確認',
       error: false,
       completed: false,
     },
     {
-      label: 'FINISH',
+      label: '完了',
       error: false,
       completed: false,
     },
@@ -59,7 +57,7 @@ const initialState: VisitRecordState = {
 }
 
 export const registrationSlice = createSlice({
-  name: 'VisitRecord',
+  name: 'visitRecord',
   initialState,
   reducers: {},
   extraReducers: builder => {

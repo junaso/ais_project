@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 // material-ui
-import { Typography, TextField, Button, Box } from '@mui/material'
+import { Typography, TextField, Button, Box, Grid } from '@mui/material'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
@@ -38,10 +38,10 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       .required("error message"),
     numberWith: yup
       .number()
-      .typeError("error message")
-      .min(0, "error message")
-      .max(9999, "error message")
-      .required("error message"),
+      .typeError("数字を入力してください。")
+      .min(0, "0から9,999までの数字を入力してください")
+      .max(9999, "0から9,999までの数字を入力してください")
+      .required("入力してください。"),
     isHost: yup
       .boolean()
       .typeError("error message")
@@ -108,6 +108,13 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={{ display: 'grid', gap: 2, justifyContent: 'center' }}>
+
+        <Grid item xs={12} mt={3}>
+          <Typography variant="h5">
+            基本情報
+          </Typography>
+        </Grid>
+
         <Typography sx={{ fontWeight: 'bold', mt: 3 }}>お名前</Typography>
         <TextField
           fullWidth
@@ -136,21 +143,29 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
           error={'numberWith' in errors}
           helperText={errors.numberWith?.message}
         />
-        <Typography sx={{ fontWeight: 'bold', mt: 3 }}>test</Typography>
+
+        <Grid item xs={12} mt={3}>
+          <Typography variant="h5">
+            ご用件
+          </Typography>
+        </Grid>
+
+        <Typography sx={{ fontWeight: 'bold', mt: 3 }}>面会者</Typography>
         <TextField
           fullWidth
           {...register('empNo')}
           error={'empNo' in errors}
-          helperText={errors.numberWith?.message}
+          helperText={errors.empNo?.message}
         />
-         <Typography sx={{ fontWeight: 'bold', mt: 3 }}>test</Typography>
+        <Typography sx={{ fontWeight: 'bold', mt: 3 }}>ご用件</Typography>
         <TextField
           fullWidth
           {...register('reason')}
           error={'reason' in errors}
-          helperText={errors.numberWith?.message}
+          helperText={errors.reason?.message}
         />
       </Box>
+
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
         <Button sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
         <Button type="submit" sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>次へ</Button>
