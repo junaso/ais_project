@@ -2,10 +2,6 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Box } from "@mui/material"
-import AgreementForm from "components/organisms/pageDesign/AgreementForm"
-
-
-
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -27,7 +23,6 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
           <Box>
-          <AgreementForm/>
             {children}
           </Box>
       </body>

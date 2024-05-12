@@ -5,7 +5,7 @@ import { Checkbox, Button, Typography, CardContent, Card, CardActions } from '@m
 import 'styles/agreementForm.css'
 import Image from 'next/image'
 
-const AgreementForm: React.FC = () => {
+const Agreement: React.FC = () => {
   const [agreed, setAgreed] = useState<boolean>(false)
 
   const handleAgreementChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,4 +68,4 @@ const AgreementForm: React.FC = () => {
   )
 }
 
-export default AgreementForm
+export default Agreement
