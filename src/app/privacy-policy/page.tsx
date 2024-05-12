@@ -1,5 +1,7 @@
+"use client"
+
 import Page from 'app/page'
-import PrivacyPolicy from 'components/organisms/pageDesign/PrivacyPolicy'
+import PrivacyPolicy from 'components/page/PrivacyPolicy'
 
 const PrivacyPolicyPage = () => (
   <Page title="PrivacyPolicyPage">

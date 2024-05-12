@@ -1,7 +1,3 @@
 export const API = {
-  REGISTRATION: {
-    POST: '/visit-record',
-  }
+  VISIT_RECORD: '/visit-record'
 }
-
-export const apiPath = (path: string) => `${path}`

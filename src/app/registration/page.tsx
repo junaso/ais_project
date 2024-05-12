@@ -1,9 +1,11 @@
+"use client"
+
 import Page from 'app/page'
-import RegistrationForm from 'components/organisms/pageDesign/RegistrationForm'
+import Registration from 'components/page/Registration'
 
 const RegistrationPage = () => (
   <Page title="Registration Form">
-    <RegistrationForm />
+    <Registration/>
   </Page>
 )
 

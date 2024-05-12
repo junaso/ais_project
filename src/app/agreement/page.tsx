@@ -1,9 +1,12 @@
+"use client"
+
 import Page from 'app/page'
-import AgreementForm from 'components/organisms/pageDesign/AgreementForm'
+import Agreement from 'components/page/Agreement'
+
 
 const AgreementPage = () => (
   <Page title="Agreement Form">
-    <AgreementForm />
+    <Agreement />
   </Page>
 )
 

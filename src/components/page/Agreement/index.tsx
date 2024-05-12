@@ -5,7 +5,7 @@ import { Checkbox, Button, Typography, CardContent, Card, CardActions } from '@m
 import 'styles/agreementForm.css'
 import Image from 'next/image'
 
-const AgreementForm: React.FC = () => {
+const Agreement: React.FC = () => {
   const [agreed, setAgreed] = useState<boolean>(false)
 
   const handleAgreementChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +29,7 @@ const AgreementForm: React.FC = () => {
         <br/>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         </Typography>
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" fontWeight="bold" component="div">
         ご来訪のお客様へ
         </Typography>
         <br/><br/>
@@ -68,4 +68,4 @@ const AgreementForm: React.FC = () => {
   )
 }
 
-export default AgreementForm
+export default Agreement
