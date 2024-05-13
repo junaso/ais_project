@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Checkbox, Button, Typography, CardContent, Card, CardActions } from '@mui/material'
 import 'styles/agreementForm.css'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Agreement: React.FC = () => {
   const [agreed, setAgreed] = useState<boolean>(false)
@@ -57,9 +58,11 @@ const Agreement: React.FC = () => {
         />
         <a href="#">プライバシーポリシー</a>同義</Typography>
       <CardActions className='button'>
+      <Link href="/registration">
         <Button size="large" variant="contained" onClick={handleNextStep} disabled={!agreed}>
           登録開始
         </Button>
+      </Link>
       </CardActions>
       </CardContent>
     </Card>
