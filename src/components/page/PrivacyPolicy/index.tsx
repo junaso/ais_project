@@ -3,6 +3,7 @@
 import { Button, Card, CardActions, CardContent, Typography } from "@mui/material"
 import 'styles/privacyPolicy.css'
 import Image from "next/image"
+import Link from "next/link"
 
 const PrivacyPolicy = () => {
 
@@ -94,7 +95,9 @@ const PrivacyPolicy = () => {
         代表取締役社長  田中 耕一郎
         </Typography>
       <CardActions style={{ position: 'fixed', bottom: 20, right: 20 }}>
+        <Link href="/agreement">
         <Button size="large" variant="contained">戻る</Button>
+        </Link>
       </CardActions>
       </CardContent>
     </Card>
