@@ -26,15 +26,20 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       .required("error message"),
     visName: yup
       .string()
-      .typeError("error message")
+      .typeError("お名前を入力してください。")
+      .matches(/^[\u3040-\u309F\u4E00-\u9FAF A-Za-z]+$/, "漢字・ローマ字・ひらがなを使って入力してください。")
+      .max(256,"256文字までの文字を入力できます。")
       .required("error message"),
     companyName: yup
+    // 空欄(null)でも大丈夫かどうか確認して削除または追加
       .string()
-      .typeError("error message")
+      .typeError("会社名を入力してください。")
+      .max(256,"256文字までの文字を入力できます。")
       .required("error message"),
     tel: yup
       .string()
-      .typeError("error message")
+      .typeError("電話番号を入力してください。")
+      .matches(/^0[789]0-[0-9]{4}-[0-9]{4}$/, "電話番号を数字と(-)で入力して下さい。")
       .required("error message"),
     numberWith: yup
       .number()
@@ -51,8 +56,10 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       .typeError("error message")
       .required("error message"),
     reason: yup
+    // 空欄(null)でも大丈夫かどうか確認して削除または追加
       .string()
-      .typeError("error message")
+      .typeError("ご用件をを入力してください。")
+      .max(9999,"9999文字まで入力できます。")
       .required("error message"),
     checkIn: yup
       .string()
