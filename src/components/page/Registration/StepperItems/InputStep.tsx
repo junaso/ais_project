@@ -9,6 +9,7 @@ import * as yup from 'yup'
 
 import type { SubmitHandler } from 'react-hook-form'
 import type { VisitRecord, FormStep } from 'types/visitRecord'
+import Link from 'next/link'
 
 interface InputStepProps {
   step: FormStep
@@ -174,7 +175,9 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       </Box>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
+        <Link href="/agreement">
         <Button sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
+        </Link>
         <Button type="submit" sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>次へ</Button>
       </Box>
 
