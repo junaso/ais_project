@@ -62,7 +62,7 @@ const Registration = () => {
             ref={refReview}
             data={steps[0].data}
             onNext={handleNext}
-            onPrevious={handlePrevious}
+            // onPrevious={handlePrevious}
             onUpdateData={onCreateVisitRecord}
             onUpdateStep={onUpdateStep} />
         )
