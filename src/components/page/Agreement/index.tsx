@@ -58,9 +58,11 @@ const Agreement: React.FC = () => {
         />
         <Link href="/privacy-policy" className="blue-text">プライバシーポリシー</Link>同義</Typography>
       <CardActions className='button'>
+      <Link href="/registration">
         <Button size="large" variant="contained" onClick={handleNextStep} disabled={!agreed}>
           登録開始
         </Button>
+      </Link>
       </CardActions>
       </CardContent>
     </Card>
