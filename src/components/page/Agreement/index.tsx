@@ -32,7 +32,7 @@ const Agreement: React.FC = () => {
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         </Typography>
         <Typography variant="h5" fontWeight="bold" component="div">
-        {ITEMS.TITLE}
+        {ITEMS.GUIDANCE_TITLE}
         </Typography>
         <br/><br/>
         <Typography variant="body2">
