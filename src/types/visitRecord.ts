@@ -1,14 +1,14 @@
 export type VisitRecord = {
   visNo: number,
   visName: string,
-  companyName: string,
+  companyName?: string | null,
   tel: string,
   numberWith: number,
   isHost: boolean,
-  empNo: number,
-  reason: string,
+  empNo?: number | null,
+  reason?: string | null,
   checkIn: string,
-  checkOut: string
+  checkOut?: string | null
 }
 
 export type VisitRecordState = {
