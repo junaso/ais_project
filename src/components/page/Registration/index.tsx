@@ -5,11 +5,13 @@ import { Grid, StepLabel, Stepper, Step, Typography } from '@mui/material'
 import { ReviewStep, FinishStep, InputStep } from './StepperItems'
 import type { VisitRecord } from 'types/visitRecord'
 import { useVisitRecord } from 'hooks'
+import 'styles/stepper.css'
 
 const Registration = () => {
   const {
     onUpdateStep,
     onSetActiveStep,
+    onResetData,
     steps,
     activeStep,
     onCreateVisitRecord
@@ -54,7 +56,7 @@ const Registration = () => {
             defaultValues={visitRecord}
             onPrevious={handlePrevious}
             onNext={handleNext}
-            onUpdateStep={onUpdateStep} />
+            onUpdateStep={onUpdateStep}/>
         )
       case 1:
         return (
@@ -64,7 +66,8 @@ const Registration = () => {
             onNext={handleNext}
             // onPrevious={handlePrevious}
             onUpdateData={onCreateVisitRecord}
-            onUpdateStep={onUpdateStep} />
+            onUpdateStep={onUpdateStep}
+            onResetData={onResetData}/>
         )
 
       case 2:
@@ -80,7 +83,7 @@ const Registration = () => {
   }
 
   return (
-    <Grid container spacing={1}>
+    <Grid className='stepper' container spacing={1}>
       <Stepper alternativeLabel activeStep={activeStep} sx={{ pt: 2, pb: 3 }}>
         {steps.map((item) => {
           const stepLabelProps = {
