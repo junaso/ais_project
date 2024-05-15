@@ -32,22 +32,22 @@ const Agreement: React.FC = () => {
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         </Typography>
         <Typography variant="h5" fontWeight="bold" component="div">
-        {ITEMS.TITLE}
+        {ITEMS.AGREEMENT.TITLE}
         </Typography>
         <br/><br/>
         <Typography variant="body2">
-            {ITEMS.GUIDANCE_INTRO_A}<br/>
-            {ITEMS.GUIDANCE_INTRO_B}<br/>
-            {ITEMS.GUIDANCE_INTRO_C}
+            {ITEMS.AGREEMENT.GUIDANCE_INTRO_A}<br/>
+            {ITEMS.AGREEMENT.GUIDANCE_INTRO_B}<br/>
+            {ITEMS.AGREEMENT.GUIDANCE_INTRO_C}
         </Typography>
         <br/>
         <Typography variant="body2">
-        {ITEMS.GUIDANCE_INTRO_D}<br/>
-        {ITEMS.GUIDANCE_INTRO_E}
+        {ITEMS.AGREEMENT.GUIDANCE_INTRO_D}<br/>
+        {ITEMS.AGREEMENT.GUIDANCE_INTRO_E}
         </Typography>
         <br/>
         <Typography variant="body2">
-        {ITEMS.GUIDANCE_INTRO_F}
+        {ITEMS.AGREEMENT.GUIDANCE_INTRO_F}
         </Typography>
         <br/>
         <Typography>
