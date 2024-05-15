@@ -14,86 +14,81 @@ const PrivacyPolicy = () => {
         <Image src="/img/BI.png" alt="BI Image" className="bi-image" width={150} height={110} />
         <br/>
         <Typography variant="h5" component="div"  align="left">
-            {ITEMS.PRIVACY_TITLE}
+            {ITEMS.PRIVACY.TITLE}
         </Typography>
         <br/>
         <Typography variant="body2" align="left" >
-        {ITEMS.GUIDANCE_INTRO_A}<br/>
-        {ITEMS.PRIVACY_INTRO_AB}<br/>
-        {ITEMS.PRIVACY_INTRO_AC}<br/>
-        {ITEMS.PRIVACY_INTRO_AD}
+        {ITEMS.PRIVACY.PRIVACY_PREAMBLE_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_PREAMBLE_B}<br/>
+        {ITEMS.PRIVACY.PRIVACY_PREAMBLE_C}<br/>
+        {ITEMS.PRIVACY.PRIVACY_PREAMBLE_D}
         </Typography>
         <br/>
         <Typography variant="body2"  align="left">
-        {ITEMS.PRIVACY_INTRO_B}<br/>
-        {ITEMS.PRIVACY_INTRO_BA}<br/>
-        {ITEMS.PRIVACY_INTRO_BB}
+        {ITEMS.PRIVACY.PRIVACY_GROWTH_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_GROWTH_B}<br/>
+        {ITEMS.PRIVACY.PRIVACY_GROWTH_C}
         </Typography>
         <br/>
         <Typography variant="body2"  align="left">
-        {ITEMS.PRIVACY_INTRO_C}<br/>
-        {ITEMS.PRIVACY_INTRO_CA}
+        {ITEMS.PRIVACY.PRIVACY_USE_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_USE_B}
         </Typography>
         <br/>
         <Typography variant="body2"  align="left">
-        {ITEMS.PRiVACY_INTRO_D}<br/>
-        {ITEMS.PRiVACY_INTRO_DA}
+        {ITEMS.PRIVACY.PRIVACY_CONSENT_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_CONSENT_B}
         </Typography>
         <br/>
         <Typography variant="body2"  align="left">
-        {ITEMS.PRIVACY_INTRO_E}<br/>
-        {ITEMS.PRIVACY_INTRO_EA}
+        {ITEMS.PRIVACY.PRIVACY_CONTROL_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_CONTROL_B}
         </Typography>
         <br/>
         <Typography variant="body2"  align="left">
-        {ITEMS.PRIVACY_INTRO_F}<br/>
-        {ITEMS.PRIVACY_INTRO_FA}
+        {ITEMS.PRIVACY.PRIVACY_RATIONAL_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_RATIONAL_B}<br/>
+        {ITEMS.PRIVACY.PRIVACY_RATIONAL_C}
         </Typography>
         <br/>
         <Typography variant="body2"  align="left">
-        {ITEMS.PRIVACY_INTRO_G}<br/>
-        {ITEMS.PRIVACY_INTRO_GA}<br/>
-        {ITEMS.PRIVACY_INTRO_GB}
+        {ITEMS.PRIVACY.PRIVACY_LEAKAGE_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_LEAKAGE_B}
         </Typography>
         <br/>
         <Typography variant="body2"  align="left">
-        {ITEMS.PRIVACY_INTRO_H}<br/>
-        {ITEMS.PRIVACY_INTRO_HA}
-        </Typography>
-        <br/>
-        <Typography variant="body2"  align="left">
-        {ITEMS.PRIVACY_INTRO_I}<br/>
-        {ITEMS.PRIVACY_INTRO_IA}<br/>
-        {ITEMS.PRIVACY_INTRO_IB}<br/>
-        {ITEMS.PRIVACY_INTRO_IC}
+        {ITEMS.PRIVACY.PRIVACY_INQUIRY_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_INQUIRY_B}<br/>
+        {ITEMS.PRIVACY.PRIVACY_INQUIRY_C}<br/>
+        {ITEMS.PRIVACY.PRIVACY_INQUIRY_D}
         </Typography>
         <br/>
         <Typography variant="body2" align="left">
-        {ITEMS.PRIVACY_INTRO_J}<br/>
-        {ITEMS.PRIVACY_INTRO_JA}<br/>
-        {ITEMS.PRIVACY_INTRO_JB}
+        {ITEMS.PRIVACY.PRIVACY_SUPPORT_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_SUPPORT_B}<br/>
+        {ITEMS.PRIVACY.PRIVACY_SUPPORT_C}
         </Typography>
         <br/>
         <Typography variant="body2"  align="left">
-        {ITEMS.PRIVACY_INTRO_K}<br/>
-        {ITEMS.PRIVACY_INTRO_KA}
+        {ITEMS.PRIVACY.PRIVACY_COMPLAINT_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_COMPLAINT_B}
         </Typography>
         <br/>
         <Typography variant="body2"  align="left">
-        {ITEMS.PRIVACY_INTRO_L}<br/>
-        {ITEMS.PRIVACY_INTRO_LA}
+        {ITEMS.PRIVACY.PRIVACY_COMPLY_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_COMPLY_B}
         </Typography>
         <br/>
         <Typography variant="body2"  align="left">
-        {ITEMS.PRIVACY_INTRO_M}<br/>
-        {ITEMS.PRIVACY_INTRO_MA}
+        {ITEMS.PRIVACY.PRIVACY_DECIDE_A}<br/>
+        {ITEMS.PRIVACY.PRIVACY_DECIDE_B}
         </Typography>
         <br/>
         <Typography variant="body2" className="text-end"  align="left">
-        {ITEMS.PRIVACY_INTRO_N}<br/><br/>
-        {ITEMS.PRIVACY_INTRO_NA}<br/><br/>
-        {ITEMS.PRIVACY_INTRO_NB}<br/><br/>
-        {ITEMS.PRIVACY_INTRO_NC}
+        {ITEMS.PRIVACY.PRIVACY_END_A}<br/><br/>
+        {ITEMS.PRIVACY.PRIVACY_END_B}<br/><br/>
+        {ITEMS.PRIVACY.PRIVACY_END_C}<br/><br/>
+        {ITEMS.PRIVACY.PRIVACY_END_D}
         </Typography>
       <CardActions style={{ position: 'fixed', bottom: 20, right: 20 }}>
         <Link href="/agreement">
