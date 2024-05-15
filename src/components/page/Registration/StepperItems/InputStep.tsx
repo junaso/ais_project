@@ -25,19 +25,19 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       .number()
       .typeError("error message")
       .required("error message"),
-      visName: yup
+    visName: yup
       .string()
       .typeError("漢字・ローマ字・ひらがなを使って入力してください。")
       .matches(/^[\u3040-\u309F\u4E00-\u9FAF A-Za-z]+$/, "漢字・ローマ字・ひらがなを使って入力してください。")
       .max(256,"256文字までの文字を入力できます。")
       .required("お名前を入力してください。"),
     companyName: yup
-    // 空欄(null)でも大丈夫かどうか確認して削除または追加
       .string()
       .typeError("会社名を入力してください。")
       .max(256,"256文字までの文字を入力できます。")
-      .required("error message"),
-      tel: yup
+      .nullable()
+      .notRequired(),
+    tel: yup
       .string()
       .typeError("電話番号を数字と(-)で入力して下さい。")
       .matches(/^\d{2,3}-\d{4}-\d{4}$/, "電話番号を数字と(-)で入力して下さい。")
@@ -55,13 +55,14 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
     empNo: yup
       .number()
       .typeError("error message")
-      .required("error message"),
+      .nullable()
+      .notRequired(),
     reason: yup
-    // 空欄(null)でも大丈夫かどうか確認して削除または追加
       .string()
       .typeError("ご用件をを入力してください。")
       .max(9999,"9999文字まで入力できます。")
-      .required("error message"),
+      .nullable()
+      .notRequired(),
     checkIn: yup
       .string()
       .typeError("error message")
@@ -69,7 +70,8 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
     checkOut: yup
       .string()
       .typeError("error message")
-      .required("error message"),
+      .nullable()
+      .notRequired(),
   })
 
   const {
@@ -78,19 +80,19 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
     formState: { errors, isValid },
   } = useForm<VisitRecord>({
     mode: 'all',
-    resolver: yupResolver<VisitRecord>(schema),
+    resolver: yupResolver(schema),
     defaultValues: step.data
       ? {
         visNo: step.data.visNo,
         visName: step.data.visName,
-        companyName: step.data.companyName,
+        companyName: step.data.companyName ?? null,
         tel: step.data.tel,
         numberWith: step.data.numberWith,
         isHost: step.data.isHost,
-        empNo: step.data.empNo,
-        reason: step.data.reason,
+        empNo: step.data.empNo ?? null,
+        reason: step.data.reason ?? null,
         checkIn: step.data.checkIn,
-        checkOut: step.data.checkOut,
+        checkOut: step.data.checkOut ?? null,
       }
       : defaultValues,
   })
