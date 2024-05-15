@@ -5,6 +5,7 @@ import { Checkbox, Button, Typography, CardContent, Card, CardActions } from '@m
 import 'styles/agreementForm.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ITEMS } from 'constant/items'
 
 const Agreement: React.FC = () => {
   const [agreed, setAgreed] = useState<boolean>(false)
@@ -31,22 +32,22 @@ const Agreement: React.FC = () => {
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         </Typography>
         <Typography variant="h5" fontWeight="bold" component="div">
-        ご来訪のお客様へ
+        {ITEMS.TITLE}
         </Typography>
         <br/><br/>
         <Typography variant="body2">
-            いつもお世話になっております。<br/>
-            弊社は、個人情報護法を順守しており、<br/>
-            各種情報を安全、確実に取り扱っております。
+            {ITEMS.GUIDANCE_INTRO_A}<br/>
+            {ITEMS.GUIDANCE_INTRO_B}<br/>
+            {ITEMS.GUIDANCE_INTRO_C}
         </Typography>
         <br/>
         <Typography variant="body2">
-            その為、ご来訪（入室）のお客様に<br/>
-            入室登録をお願いしております。
+        {ITEMS.GUIDANCE_INTRO_D}<br/>
+        {ITEMS.GUIDANCE_INTRO_E}
         </Typography>
         <br/>
         <Typography variant="body2">
-            ご協力くださるようにお願い申し上げます。
+        {ITEMS.GUIDANCE_INTRO_F}
         </Typography>
         <br/>
         <Typography>
