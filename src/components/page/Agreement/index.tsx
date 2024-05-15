@@ -36,18 +36,18 @@ const Agreement: React.FC = () => {
         </Typography>
         <br/><br/>
         <Typography variant="body2">
-            {ITEMS.GUIDENCE_INTRO_A}<br/>
-            {ITEMS.GUIDENCE_INTRO_B}<br/>
-            {ITEMS.GUIDENCE_INTRO_C}
+            {ITEMS.GUIDANCE_INTRO_A}<br/>
+            {ITEMS.GUIDANCE_INTRO_B}<br/>
+            {ITEMS.GUIDANCE_INTRO_C}
         </Typography>
         <br/>
         <Typography variant="body2">
-        {ITEMS.GUIDENCE_INTRO_D}<br/>
-        {ITEMS.GUIDENCE_INTRO_E}
+        {ITEMS.GUIDANCE_INTRO_D}<br/>
+        {ITEMS.GUIDANCE_INTRO_E}
         </Typography>
         <br/>
         <Typography variant="body2">
-        {ITEMS.GUIDENCE_INTRO_F}
+        {ITEMS.GUIDANCE_INTRO_F}
         </Typography>
         <br/>
         <Typography>
