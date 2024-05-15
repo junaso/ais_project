@@ -1,12 +1,12 @@
 export const ITEMS = {
-    title: 'ご来訪のお客様へ',
+    TITLE: 'ご来訪のお客様へ',
 
-    guidence_1_1: 'いつもお世話になっております。',
-    guidence_1_2: '弊社は、個人情報護法を順守しており、',
-    guidence_1_3: '各種情報を安全、確実に取り扱っております。',
+    GUIDENCE_INTRO_A: 'いつもお世話になっております。',
+    GUIDENCE_INTRO_B: '弊社は、個人情報護法を順守しており、',
+    GUIDENCE_INTRO_C: '各種情報を安全、確実に取り扱っております。',
 
-    guidence_2_1: 'その為、ご来訪（入室）のお客様に',
-    guidence_2_2: '入室登録をお願いしております。',
+    GUIDENCE_INTRO_D: 'その為、ご来訪（入室）のお客様に',
+    GUIDENCE_INTRO_E: '入室登録をお願いしております。',
 
-    guidence_3: 'ご協力くださるようにお願い申し上げます。'
+    GUIDENCE_INTRO_F: 'ご協力くださるようにお願い申し上げます。'
 }
