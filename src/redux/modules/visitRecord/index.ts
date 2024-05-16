@@ -34,6 +34,9 @@ export const setActiveStep = createAction('registration/setActiveStep', (index: 
   }
 })
 
+export const resetVisitRecord = createAction('registration/resetVisitRecord')
+
+
 const initialState: VisitRecordState = {
 
   steps: [
@@ -56,6 +59,8 @@ const initialState: VisitRecordState = {
   activeStep: 0,
 }
 
+
+
 export const registrationSlice = createSlice({
   name: 'visitRecord',
   initialState,
@@ -69,6 +74,27 @@ export const registrationSlice = createSlice({
       .addCase(setActiveStep, (state, action) => {
         const { index } = action.payload
         state.activeStep = index
+      })
+      .addCase(resetVisitRecord, (state) => {
+        // visitRecord 状態を初期化するロジック追加
+        state.steps = [
+          {
+            label: '入力',
+            error: false,
+            completed: false,
+          },
+          {
+            label: '確認',
+            error: false,
+            completed: false,
+          },
+          {
+            label: '完了',
+            error: false,
+            completed: false,
+          },
+        ],
+        state.activeStep = initialState.activeStep
       })
   },
 })
