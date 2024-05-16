@@ -73,8 +73,10 @@ const Registration = () => {
       case 2:
         return (
           <FinishStep
+            visName={steps[0].data?.visName}
             ref={refFinish}
             onNext={handleReset}
+            onResetData={onResetData}
           />
         )
       default:
