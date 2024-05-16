@@ -4,8 +4,6 @@ import { Box, Button, Grid, Table, TableBody, TableCell, TableContainer, TableRo
 
 import type { FormStep, VisitRecord } from 'types/visitRecord'
 
-import Link from 'next/link'
-
 import 'styles/reviewStep.css'
 
 
@@ -31,7 +29,9 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
   }
 
   const handleCancel = () => {
+    // 初期化するメソッド
     onResetData()
+    // 初期化すると同時にagreementページで連結
     window.location.href = '/agreement'
   }
 
@@ -78,9 +78,7 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
               gap: 2, mt: 3,
               alignItems: 'center',
               justifyItems: 'center' }}>
-              <Link href="/agreement">
               <Button onClick={handleCancel} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
-              </Link>
               <Button onClick={handleCreateVisitRecord} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>登録</Button>
             </Box>
       </TableContainer>

@@ -77,7 +77,23 @@ export const registrationSlice = createSlice({
       })
       .addCase(resetVisitRecord, (state) => {
         // visitRecord 状態を初期化するロジック追加
-        state.steps = []
+        state.steps = [
+          {
+            label: '入力',
+            error: false,
+            completed: false,
+          },
+          {
+            label: '確認',
+            error: false,
+            completed: false,
+          },
+          {
+            label: '完了',
+            error: false,
+            completed: false,
+          },
+        ],
         state.activeStep = initialState.activeStep
       })
   },
