@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, FormControl, Grid, Link, Stack, Typography, createTheme } from '@mui/material'
+import { Button, FormControl, Grid, Link, Stack, Typography } from '@mui/material'
 import { ITEMS } from 'constant/items'
 import HomeIcon from '@mui/icons-material/Home'
 
