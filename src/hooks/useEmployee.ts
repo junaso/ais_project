@@ -1,39 +1,27 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from 'redux/store'
 import {
-  fetchEmployeeList,
+  createEmployeeList,
   employeeSelector,
 } from 'redux/modules/employee'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 const useEmployee = () => {
   const dispatch = useDispatch<AppDispatch>()
 
   const employeeState = useSelector(employeeSelector)
-  const { employee } = employeeState
-
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const { employeeList, status, error } = employeeState
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      setError(null)
-      try {
-        await dispatch(fetchEmployeeList()).unwrap()
-      } catch (err) {
-        setError(err as string)
-      }
-      setLoading(false)
+    if (status === 'idle') {
+      dispatch(createEmployeeList())
     }
-
-    fetchData()
-  }, [dispatch])
+  }, [dispatch, status])
 
   return {
-    employee,
-    loading,
-    error,
+    employeeList,
+    status,
+    error
   }
 }
 

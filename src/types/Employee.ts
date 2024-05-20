@@ -10,5 +10,7 @@ export type Employee = {
   }
 
   export type EmployeeState = {
-    employee : Employee[]
+    employeeList : Employee[]
+    status: 'idle' | 'loading' | 'succeeded' | 'failed'
+    error: string | null
   }
