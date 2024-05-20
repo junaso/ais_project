@@ -9,8 +9,6 @@ export type Employee = {
       mail:string
   }
 
-  export type EmployeeList = {
-    employeeList : Employee[]
-    status: 'idle' | 'loading' | 'succeeded' | 'failed'
-    error: string | null
+  export type EmployeeState = {
+    employee : Employee[]
   }

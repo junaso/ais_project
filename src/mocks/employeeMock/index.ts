@@ -1,8 +1,8 @@
-import { EmployeeList } from "types/Employee"
+import { EmployeeState } from "types/Employee"
 
-export const mockFormData: EmployeeList = {
+export const mockFormData: EmployeeState = {
       
-        employeeList: [
+        employee: [
             
             {
             empNo:1,
@@ -34,7 +34,5 @@ export const mockFormData: EmployeeList = {
             securityLevel:1,
             mail:'zxcv@ais-info.co.jp'
             }
-        ],
-        status: 'idle', // 状態
-        error: null // error
+        ]
   }
