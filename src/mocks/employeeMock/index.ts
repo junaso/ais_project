@@ -34,5 +34,7 @@ export const mockFormData: EmployeeList = {
             securityLevel:1,
             mail:'zxcv@ais-info.co.jp'
             }
-        ]
+        ],
+        status: 'idle', // 状態
+        error: null // error
   }

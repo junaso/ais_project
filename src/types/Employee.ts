@@ -11,4 +11,6 @@ export type Employee = {
 
   export type EmployeeList = {
     employeeList : Employee[]
+    status: 'idle' | 'loading' | 'succeeded' | 'failed'
+    error: string | null
   }
