@@ -1,13 +1,22 @@
 import React from 'react'
 
-import { Button, FormControl, Grid, Link, Stack, Typography } from '@mui/material'
+import { Button, FormControl, Grid, Link, Stack, Typography, createTheme } from '@mui/material'
 import { ITEMS } from 'constant/items'
+import HomeIcon from '@mui/icons-material/Home';
 
 interface FinishStepProps {
   visName: string | undefined
   onNext: () => void
   onResetData: () => void
 }
+
+const theme = createTheme({
+  palette: {
+    secondary: {
+      main: '#d32f2f',
+    },
+  },
+})
 
 
 const FinishStep = React.forwardRef<HTMLButtonElement, FinishStepProps>(({ visName, onResetData }, ref) => {
@@ -32,14 +41,16 @@ const FinishStep = React.forwardRef<HTMLButtonElement, FinishStepProps>(({ visNa
           </Typography>
         </Grid>
         <Grid item xs={12} mt={4} mb={4}>
-          <Stack className='button' direction="row" justifyContent="center" alignItems="center" mb={4} spacing={1}>
-            <Button variant="contained" color="primary" size="large" onClick={handleCancel} ref={ref}>
+          <Stack direction="row" justifyContent="center" alignItems="center" mb={4} spacing={1}>
+            <Button variant="contained" color="primary" size="medium" onClick={handleCancel} ref={ref}>
               完了
             </Button>
           </Stack>
           <Stack direction="row" justifyContent="center" alignItems="center" spacing={1}>
           <Link href='https://www.ais-info.co.jp/'>
-            <Button>
+            <Button variant="contained" style={{ background: '#ff7961'}} size='large'>
+              <HomeIcon sx={{ marginRight: 2, fontSize: 40 }}/>
+              亜細亜情報システム<br/>
               ホームページ
             </Button>
             </Link>
