@@ -2,21 +2,13 @@ import React from 'react'
 
 import { Button, FormControl, Grid, Link, Stack, Typography, createTheme } from '@mui/material'
 import { ITEMS } from 'constant/items'
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from '@mui/icons-material/Home'
 
 interface FinishStepProps {
   visName: string | undefined
   onNext: () => void
   onResetData: () => void
 }
-
-const theme = createTheme({
-  palette: {
-    secondary: {
-      main: '#d32f2f',
-    },
-  },
-})
 
 
 const FinishStep = React.forwardRef<HTMLButtonElement, FinishStepProps>(({ visName, onResetData }, ref) => {
