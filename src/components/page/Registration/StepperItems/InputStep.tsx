@@ -13,19 +13,20 @@ import Link from 'next/link'
 
 
 import { mockFormData } from 'mocks/employeeMock'
-import { Employee } from 'types/Employee'
+import { Employee } from 'types/employee'
 
 interface InputStepProps {
   step: FormStep
   defaultValues: VisitRecord
   onPrevious: () => void
   onNext: () => void
+  onCancle: () => void
   onUpdateStep: (index: number, step: FormStep) => void
   onSelectedEmployeeChange: (empNo: number | null) => void // 새로운 prop 추가
   selectedEmployeeEmpNo: number | null
 }
 
-const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, defaultValues, onNext, onUpdateStep, onSelectedEmployeeChange }) => {
+const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, defaultValues, onNext, onCancle, onUpdateStep, onSelectedEmployeeChange }) => {
   const schema = yup.object({
     visNo: yup
       .number()
@@ -209,9 +210,7 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       </Box>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
-        <Link href="/agreement">
-          <Button sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
-        </Link>
+        <Button onClick={onCancle}sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
         <Button type="submit" sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>次へ</Button>
       </Box>
 

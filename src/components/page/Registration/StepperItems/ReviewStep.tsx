@@ -6,39 +6,28 @@ import type { FormStep, VisitRecord } from 'types/visitRecord'
 
 import 'styles/reviewStep.css'
 
-
-
-
-
 interface ReviewStepProps {
   data: VisitRecord | undefined
   onNext: () => void
-  // onPrevious: () => void
   onUpdateStep: (index: number, step: FormStep) => void
   onUpdateData: (data: VisitRecord) => void
-  onResetData: () => void
+  onCancle: () => void
   selectedEmployeeEmpNo: number | null;
 }
 
-const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onResetData, selectedEmployeeEmpNo }) => {
+const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onCancle, selectedEmployeeEmpNo }) => {
+  
+  
   const handleCreateVisitRecord = () => {
-
-    console.log("test01", data)
-
     if (data) {
-      console.log("test")
       onUpdateData(data)
     }
     onNext()
   }
 
   const handleCancel = () => {
-    // 初期化するメソッド
-    onResetData()
-    // 初期化すると同時にagreementページで連結
-    window.location.href = '/agreement'
+    onCancle()
   }
-
 
   return (
     <Grid container spacing={3}>
@@ -75,16 +64,17 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
             )}
           </TableBody>
         </Table>
-            <Box
-             sx={{
-              display: 'flex', 
-              justifyContent: 'center',
-              gap: 2, mt: 3,
-              alignItems: 'center',
-              justifyItems: 'center' }}>
-              <Button onClick={handleCancel} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
-              <Button onClick={handleCreateVisitRecord} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>登録</Button>
-            </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 2, mt: 3,
+            alignItems: 'center',
+            justifyItems: 'center'
+          }}>
+          <Button onClick={handleCancel} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
+          <Button onClick={handleCreateVisitRecord} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>登録</Button>
+        </Box>
       </TableContainer>
     </Grid>
   )

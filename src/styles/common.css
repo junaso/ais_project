@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    box-shadow: none;
+    height: 100vh;
+    background-color: #FFF3E2;
+    margin: 0px;
+}
+
+.privacy-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    box-shadow: none;
+    background-color: #FFF3E2;
+    padding: 3px;
+}
+
+.bi-image {
+    margin: auto;
+}
+
+.privacy-image{
+    margin-left: auto;
+}
+
+.button {
+    align-items: center;
+    justify-content: center;
+}
+
+.blue-text {
+    color: blue;
+}

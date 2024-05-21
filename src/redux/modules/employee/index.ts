@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { API } from 'constant/api'
 import { RootState } from 'redux/store'
-import { EmployeeState } from 'types/Employee'
+import { EmployeeState } from 'types/employee'
 import { api } from 'utill/axios'
 
 // 非同期　actionを処理
