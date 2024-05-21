@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   createVisitRecord,
   updateStep,
@@ -13,6 +14,9 @@ const useVisitRecord = () => {
   const visitRecordState = useSelector(registrationSelector)
   const { steps, activeStep } = visitRecordState
 
+  // 選択した面会者(empNo)をセーブするobject
+  const [selectedEmployeeEmpNo, setSelectedEmployeeEmpNo] = useState<number | null>(null) 
+
   const onCreateVisitRecord = (data: VisitRecord) => {
     dispatch(createVisitRecord(data))
   }
@@ -25,9 +29,14 @@ const useVisitRecord = () => {
     dispatch(setActiveStep(index))
   }
 
-  // visitRecord 상태를 초기화하는 함수
+  // visitRecordの状態を初期化する関数
   const onResetData = () => {
     dispatch(resetVisitRecord())
+  }
+
+  // 選択した面会者のempNoを設定する関数
+  const onSelectedEmployeeChange = (empNo: number | null) => {
+    setSelectedEmployeeEmpNo(empNo)
   }
 
 
@@ -38,6 +47,8 @@ const useVisitRecord = () => {
     activeStep,
     onCreateVisitRecord,
     onResetData,
+    selectedEmployeeEmpNo,
+    onSelectedEmployeeChange,
   }
 }
 

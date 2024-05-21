@@ -14,7 +14,9 @@ const Registration = () => {
     onResetData,
     steps,
     activeStep,
-    onCreateVisitRecord
+    onCreateVisitRecord,
+    onSelectedEmployeeChange,
+    selectedEmployeeEmpNo,
   } = useVisitRecord()
 
   const visitRecord: VisitRecord = {
@@ -56,7 +58,10 @@ const Registration = () => {
             defaultValues={visitRecord}
             onPrevious={handlePrevious}
             onNext={handleNext}
-            onUpdateStep={onUpdateStep}/>
+            onUpdateStep={onUpdateStep}
+            onSelectedEmployeeChange={onSelectedEmployeeChange}
+            selectedEmployeeEmpNo={selectedEmployeeEmpNo}
+            />
         )
       case 1:
         return (
@@ -67,7 +72,8 @@ const Registration = () => {
             // onPrevious={handlePrevious}
             onUpdateData={onCreateVisitRecord}
             onUpdateStep={onUpdateStep}
-            onResetData={onResetData}/>
+            onResetData={onResetData}
+            selectedEmployeeEmpNo={selectedEmployeeEmpNo}/> // selectedEmployeeEmpNo
         )
 
       case 2:
