@@ -4,7 +4,6 @@ import {
   createEmployeeList,
   employeeSelector,
 } from 'redux/modules/employee'
-import { useEffect } from 'react'
 
 const useEmployee = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -12,13 +11,12 @@ const useEmployee = () => {
   const employeeState = useSelector(employeeSelector)
   const { employeeList, status, error } = employeeState
 
-  useEffect(() => {
-    if (status === 'idle') {
-      dispatch(createEmployeeList())
-    }
-  }, [dispatch, status])
+  const onCreateEmployeeList = () => {
+    dispatch(createEmployeeList())
+  }
 
   return {
+    onCreateEmployeeList,
     employeeList,
     status,
     error

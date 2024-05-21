@@ -18,7 +18,7 @@ const FinishStep = React.forwardRef<HTMLButtonElement, FinishStepProps>(({ visNa
   }
 
   return (
-    <FormControl className='container'>
+    <FormControl>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography variant="h6" align="center" style={{ color: 'orange' }} mt={6} mb={8}>

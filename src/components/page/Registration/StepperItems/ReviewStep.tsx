@@ -11,12 +11,10 @@ interface ReviewStepProps {
   onNext: () => void
   onUpdateStep: (index: number, step: FormStep) => void
   onUpdateData: (data: VisitRecord) => void
-  onCancle: () => void
-  selectedEmployeeEmpNo: number | null;
+  onPrevious: () => void
 }
 
-const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onCancle, selectedEmployeeEmpNo }) => {
-  
+const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onPrevious }) => {
   
   const handleCreateVisitRecord = () => {
     if (data) {
@@ -25,14 +23,14 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
     onNext()
   }
 
-  const handleCancel = () => {
-    onCancle()
+  const handlePrevious = () => {
+    onPrevious()
   }
 
   return (
     <Grid container spacing={3}>
-      <TableContainer className="stepper-container">
-        <Table className='container'>
+      <TableContainer>
+        <Table>
           <TableBody>
             {data && (
               <>
@@ -54,7 +52,7 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
                 </TableRow>
                 <TableRow>
                   <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>面会者（弊社担当者）</Typography></TableCell>
-                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{selectedEmployeeEmpNo}</Typography></TableCell>
+                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.empNo}</Typography></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>ご用件</Typography></TableCell>
@@ -72,7 +70,7 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
             alignItems: 'center',
             justifyItems: 'center'
           }}>
-          <Button onClick={handleCancel} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
+          <Button onClick={handlePrevious} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>前へ</Button>
           <Button onClick={handleCreateVisitRecord} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>登録</Button>
         </Box>
       </TableContainer>

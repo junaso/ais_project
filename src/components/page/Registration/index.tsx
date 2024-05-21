@@ -5,7 +5,7 @@ import { Grid, StepLabel, Stepper, Step, Typography } from '@mui/material'
 import { ReviewStep, FinishStep, InputStep } from './StepperItems'
 import type { VisitRecord } from 'types/visitRecord'
 import { useVisitRecord } from 'hooks'
-import 'styles/stepper.css'
+import 'styles/common.css'
 import Agreement from './Agreement'
 
 const Registration = () => {
@@ -19,9 +19,7 @@ const Registration = () => {
     onResetData,
     steps,
     activeStep,
-    onCreateVisitRecord,
-    onSelectedEmployeeChange,
-    selectedEmployeeEmpNo,
+    onCreateVisitRecord
   } = useVisitRecord()
 
   const visitRecord: VisitRecord = {
@@ -74,8 +72,6 @@ const Registration = () => {
             onNext={handleNext}
             onCancle={handleCancle}
             onUpdateStep={onUpdateStep}
-            onSelectedEmployeeChange={onSelectedEmployeeChange}
-            selectedEmployeeEmpNo={selectedEmployeeEmpNo}
           />
         )
       case 1:
@@ -86,8 +82,8 @@ const Registration = () => {
             onNext={handleNext}
             onUpdateData={onCreateVisitRecord}
             onUpdateStep={onUpdateStep}
-            onCancle={handleCancle}
-            selectedEmployeeEmpNo={selectedEmployeeEmpNo} /> // selectedEmployeeEmpNo
+            onPrevious={handlePrevious}
+           />
         )
 
       case 2:
@@ -127,7 +123,8 @@ const Registration = () => {
         <Grid item xs={12} textAlign="left">
           {getStepContent(activeStep)}
         </Grid>
-      </Grid>) : (<Agreement onStart={handleStart} />)
+      </Grid>) : 
+      (<Agreement onStart={handleStart} />)
   )
 }
 
