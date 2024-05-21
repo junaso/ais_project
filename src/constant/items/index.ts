@@ -14,7 +14,7 @@ export const ITEMS = {
         GUIDANCE_INTRO_F: 'ご協力くださるようにお願い申し上げます。',
 
     },
-    
+
 
     PRIVACY: {
 
@@ -70,6 +70,11 @@ export const ITEMS = {
         PRIVACY_END_B: '2021年4月10日 改定',
         PRIVACY_END_C: '株式会社亜細亜情報システム',
         PRIVACY_END_D: '代表取締役社長  田中 耕一郎',
+    },
+
+    FINISH: {
+        FINISH_A: 'ご来訪頂きありがとうございます。',
+        FINISH_B: '入室登録を完了致しました。'
     }
 
 }

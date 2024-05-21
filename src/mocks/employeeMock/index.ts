@@ -1,4 +1,4 @@
-import { EmployeeList } from "types/Employee"
+import { Employee } from "types/Employee"
 
 export const mockFormData: EmployeeList = {
 
