@@ -1,25 +1,22 @@
 import React from 'react'
 
-import { Button, FormControl, Grid, Link, Stack, Typography } from '@mui/material'
+import { Button, FormControl, Grid, Stack, Typography } from '@mui/material'
 import { ITEMS } from 'constant/items'
 import HomeIcon from '@mui/icons-material/Home'
 
 interface FinishStepProps {
   visName: string | undefined
   onNext: () => void
-  onResetData: () => void
+  onReset: () => void
 }
 
+const FinishStep = React.forwardRef<HTMLButtonElement, FinishStepProps>(({ visName, onReset }) => {
 
-const FinishStep = React.forwardRef<HTMLButtonElement, FinishStepProps>(({ visName, onResetData }, ref) => {
-  
   const handleCancel = () => {
-    // 初期化するメソッド
-    onResetData()
-    // 初期化すると同時にagreementページで連結
-    window.location.href = '/agreement'
+    onReset()
+    window.location.href = 'https://www.ais-info.co.jp/'
   }
-  
+
   return (
     <FormControl className='container'>
       <Grid container spacing={2}>
@@ -33,20 +30,13 @@ const FinishStep = React.forwardRef<HTMLButtonElement, FinishStepProps>(({ visNa
           </Typography>
         </Grid>
         <Grid item xs={12} mt={4} mb={4}>
-          <Stack direction="row" justifyContent="center" alignItems="center" mb={4} spacing={1}>
-            <Button variant="contained" color="primary" size="medium" onClick={handleCancel} ref={ref}>
-              完了
-            </Button>
-          </Stack>
           <Stack direction="row" justifyContent="center" alignItems="center" spacing={1}>
-          <Link href='https://www.ais-info.co.jp/'>
-            <Button variant="contained" style={{ background: '#ff7961'}} size='large'>
-              <HomeIcon sx={{ marginRight: 2, fontSize: 40 }}/>
-              亜細亜情報システム<br/>
+            <Button onClick={handleCancel} variant="contained" style={{ background: '#ff7961' }} size='large'>
+              <HomeIcon sx={{ marginRight: 2, fontSize: 40 }} />
+              亜細亜情報システム<br />
               ホームページ
             </Button>
-            </Link>
-            </Stack>
+          </Stack>
         </Grid>
       </Grid>
     </FormControl>
