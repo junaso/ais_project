@@ -9,7 +9,9 @@ import * as yup from 'yup'
 
 import type { SubmitHandler } from 'react-hook-form'
 import type { VisitRecord, FormStep } from 'types/visitRecord'
-import Link from 'next/link'
+import Link from 'next/link' 
+
+
 
 interface InputStepProps {
   step: FormStep
@@ -120,9 +122,9 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       <Box sx={{ display: 'grid', gap: 2, justifyContent: 'center' }}>
 
         <Grid item xs={12} mt={3}>
-          <Typography variant="h5">
-            基本情報
-          </Typography>
+        <Typography variant="h5" sx={{ textAlign: 'center' }}>
+        基本情報
+        </Typography>
         </Grid>
 
         <Typography sx={{ fontWeight: 'bold', mt: 3 }}>お名前</Typography>
@@ -155,10 +157,11 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
         />
 
         <Grid item xs={12} mt={3}>
-          <Typography variant="h5">
-            ご用件
-          </Typography>
+        <Typography variant="h5" sx={{ textAlign: 'center' }}>
+        ご用件
+        </Typography>
         </Grid>
+
 
         <Typography sx={{ fontWeight: 'bold', mt: 3 }}>面会者</Typography>
         <TextField

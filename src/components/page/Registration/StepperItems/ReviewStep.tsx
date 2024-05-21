@@ -7,6 +7,9 @@ import type { FormStep, VisitRecord } from 'types/visitRecord'
 import 'styles/reviewStep.css'
 
 
+
+
+
 interface ReviewStepProps {
   data: VisitRecord | undefined
   onNext: () => void
@@ -38,7 +41,7 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
 
   return (
     <Grid container spacing={3}>
-      <TableContainer>
+      <TableContainer className="stepper-container">
         <Table className='container'>
           <TableBody>
             {data && (
