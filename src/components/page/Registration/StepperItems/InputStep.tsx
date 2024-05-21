@@ -190,7 +190,7 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
           inputValue={inputValue}
           onInputChange={handleInputChange}
           onChange={(event, newValue) => handleOptionSelect(newValue)}
-          options={mockFormData.employeeList}
+          options={mockFormData}
           getOptionLabel={(option: Employee) => {
             const { lastName, firstName, lastKanaName, firstKanaName } = option
             return `${lastName} ${firstName} (${lastKanaName} ${firstKanaName})`
