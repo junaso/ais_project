@@ -1,5 +1,5 @@
-import { Button, Checkbox } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Button, Checkbox } from '@mui/material'
+import { styled } from '@mui/material/styles'
 
 export const PrivacyCheckbox = styled(Checkbox)({
     color: '#ff6600', 
@@ -13,4 +13,4 @@ export const AgreementButton = styled(Button)({
     '&:hover': {
         backgroundColor: '#ff3300',
     },
-});
+})

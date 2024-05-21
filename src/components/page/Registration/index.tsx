@@ -7,7 +7,6 @@ import type { VisitRecord } from 'types/visitRecord'
 import { useVisitRecord } from 'hooks'
 import 'styles/stepper.css'
 import Agreement from './Agreement'
-import { useFormState } from 'react-dom'
 
 const Registration = () => {
 

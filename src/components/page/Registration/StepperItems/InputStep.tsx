@@ -8,9 +8,6 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
 import type { VisitRecord, FormStep } from 'types/visitRecord'
-import Link from 'next/link'
-
-
 
 import { mockFormData } from 'mocks/employeeMock'
 import { Employee } from 'types/employee'
