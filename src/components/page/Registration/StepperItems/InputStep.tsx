@@ -11,6 +11,8 @@ import type { SubmitHandler } from 'react-hook-form'
 import type { VisitRecord, FormStep } from 'types/visitRecord'
 import Link from 'next/link'
 
+import '../../../../styles/stepper.css' 
+
 interface InputStepProps {
   step: FormStep
   defaultValues: VisitRecord
