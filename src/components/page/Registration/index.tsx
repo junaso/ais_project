@@ -103,7 +103,9 @@ const Registration = () => {
           )
         })}
       </Stepper>
+      <Grid item xs={12} textAlign="left">
       {getStepContent(activeStep)}
+      </Grid>
     </Grid>
   )
 }
