@@ -1,7 +1,9 @@
 .stepper{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 20px;
     text-align: center;
+    
 }

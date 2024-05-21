@@ -10,6 +10,8 @@ import * as yup from 'yup'
 import type { VisitRecord, FormStep } from 'types/visitRecord'
 import Link from 'next/link'
 
+
+
 import { mockFormData } from 'mocks/employeeMock'
 import { Employee } from 'types/Employee'
 
@@ -23,7 +25,7 @@ interface InputStepProps {
   selectedEmployeeEmpNo: number | null
 }
 
-const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, defaultValues, onNext, onUpdateStep, onSelectedEmployeeChange  }) => {
+const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, defaultValues, onNext, onUpdateStep, onSelectedEmployeeChange }) => {
   const schema = yup.object({
     visNo: yup
       .number()
@@ -147,7 +149,7 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={{ display: 'grid', gap: 2, justifyContent: 'center' }}>
         <Grid item xs={12} mt={3}>
-          <Typography variant="h5">
+          <Typography variant="h5" sx={{ textAlign: 'center' }}>
             基本情報
           </Typography>
         </Grid>
@@ -180,7 +182,7 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
           helperText={errors.numberWith?.message}
         />
         <Grid item xs={12} mt={3}>
-          <Typography variant="h5">
+          <Typography variant="h5" sx={{ textAlign: 'center' }}>
             ご用件
           </Typography>
         </Grid>
