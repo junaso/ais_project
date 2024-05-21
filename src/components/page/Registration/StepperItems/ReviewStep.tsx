@@ -17,9 +17,10 @@ interface ReviewStepProps {
   onUpdateStep: (index: number, step: FormStep) => void
   onUpdateData: (data: VisitRecord) => void
   onResetData: () => void
+  selectedEmployeeEmpNo: number | null;
 }
 
-const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onResetData }) => {
+const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onResetData, selectedEmployeeEmpNo }) => {
   const handleCreateVisitRecord = () => {
 
     console.log("test01", data)
@@ -64,7 +65,7 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
                 </TableRow>
                 <TableRow>
                   <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>面会者（弊社担当者）</Typography></TableCell>
-                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.empNo}</Typography></TableCell>
+                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{selectedEmployeeEmpNo}</Typography></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>ご用件</Typography></TableCell>

@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { SyntheticEvent, useEffect, useState } from 'react'
 
 // material-ui
-import { Typography, TextField, Button, Box, Grid } from '@mui/material'
+import { Typography, TextField, Button, Box, Grid, Autocomplete } from '@mui/material'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
-import type { SubmitHandler } from 'react-hook-form'
 import type { VisitRecord, FormStep } from 'types/visitRecord'
-import Link from 'next/link' 
+import Link from 'next/link'
 
 
+
+import { mockFormData } from 'mocks/employeeMock'
+import { Employee } from 'types/Employee'
 
 interface InputStepProps {
   step: FormStep
@@ -19,9 +21,11 @@ interface InputStepProps {
   onPrevious: () => void
   onNext: () => void
   onUpdateStep: (index: number, step: FormStep) => void
+  onSelectedEmployeeChange: (empNo: number | null) => void // 새로운 prop 추가
+  selectedEmployeeEmpNo: number | null
 }
 
-const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, defaultValues, onNext, onUpdateStep }) => {
+const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, defaultValues, onNext, onUpdateStep, onSelectedEmployeeChange }) => {
   const schema = yup.object({
     visNo: yup
       .number()
@@ -31,12 +35,12 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       .string()
       .typeError("漢字・ローマ字・ひらがなを使って入力してください。")
       .matches(/^[\u3040-\u309F\u4E00-\u9FAF A-Za-z]+$/, "漢字・ローマ字・ひらがなを使って入力してください。")
-      .max(256,"256文字までの文字を入力できます。")
+      .max(256, "256文字までの文字を入力できます。")
       .required("お名前を入力してください。"),
     companyName: yup
       .string()
       .typeError("会社名を入力してください。")
-      .max(256,"256文字までの文字を入力できます。")
+      .max(256, "256文字までの文字を入力できます。")
       .nullable()
       .notRequired(),
     tel: yup
@@ -62,7 +66,7 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
     reason: yup
       .string()
       .typeError("ご用件をを入力してください。")
-      .max(9999,"9999文字まで入力できます。")
+      .max(9999, "9999文字まで入力できます。")
       .nullable()
       .notRequired(),
     checkIn: yup
@@ -75,6 +79,30 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       .nullable()
       .notRequired(),
   })
+
+  const [value, setValue] = useState<Employee | null>(null)
+  const [inputValue, setInputValue] = useState('')
+
+  const handleInputChange = (
+    event: SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
+    setInputValue(value)
+  }
+
+  const handleOptionSelect = (option: Employee | null) => {
+    if (option) {
+      setValue(option)
+      setInputValue(`${option.lastName} ${option.firstName}`)
+      onSelectedEmployeeChange(option.empNo) // 選択した面会者のempNoを送る
+      console.log("Selected Employee's empNo:", option.empNo)
+    } else {
+      setValue(null)
+      setInputValue('')
+      onSelectedEmployeeChange(null) // 選択解除、選択しないとnullを送る
+      console.log("Selected Employee's empNo: null")
+    }
+  }
 
   const {
     handleSubmit,
@@ -99,7 +127,7 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       : defaultValues,
   })
 
-  const onSubmit: SubmitHandler<VisitRecord> = (data) => {
+  const onSubmit = (data: VisitRecord) => {
     onUpdateStep(0, {
       ...step,
       error: false,
@@ -120,13 +148,11 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={{ display: 'grid', gap: 2, justifyContent: 'center' }}>
-
         <Grid item xs={12} mt={3}>
-        <Typography variant="h5" sx={{ textAlign: 'center' }}>
-        基本情報
-        </Typography>
+          <Typography variant="h5" sx={{ textAlign: 'center' }}>
+            基本情報
+          </Typography>
         </Grid>
-
         <Typography sx={{ fontWeight: 'bold', mt: 3 }}>お名前</Typography>
         <TextField
           fullWidth
@@ -155,20 +181,23 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
           error={'numberWith' in errors}
           helperText={errors.numberWith?.message}
         />
-
         <Grid item xs={12} mt={3}>
-        <Typography variant="h5" sx={{ textAlign: 'center' }}>
-        ご用件
-        </Typography>
+          <Typography variant="h5" sx={{ textAlign: 'center' }}>
+            ご用件
+          </Typography>
         </Grid>
-
-
         <Typography sx={{ fontWeight: 'bold', mt: 3 }}>面会者</Typography>
-        <TextField
-          fullWidth
-          {...register('empNo')}
-          error={'empNo' in errors}
-          helperText={errors.empNo?.message}
+        <Autocomplete
+          value={value}
+          inputValue={inputValue}
+          onInputChange={handleInputChange}
+          onChange={(event, newValue) => handleOptionSelect(newValue)}
+          options={mockFormData}
+          getOptionLabel={(option: Employee) => {
+            const { lastName, firstName, lastKanaName, firstKanaName } = option
+            return `${lastName} ${firstName} (${lastKanaName} ${firstKanaName})`
+          }}
+          renderInput={(params) => <TextField {...params} />}
         />
         <Typography sx={{ fontWeight: 'bold', mt: 3 }}>ご用件</Typography>
         <TextField
@@ -181,7 +210,7 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
 
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
         <Link href="/agreement">
-        <Button sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
+          <Button sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
         </Link>
         <Button type="submit" sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>次へ</Button>
       </Box>
