@@ -14,6 +14,7 @@ import type { VisitRecord, FormStep } from 'types/visitRecord'
 import { Employee } from 'types/employee'
 import { AisButton, CancleButton, OrangeTextField } from 'styles/muStyle'
 import { useEmployee } from 'hooks'
+import { ITEMS } from 'constant/items'
 
 interface InputStepProps {
   step: FormStep
@@ -160,31 +161,31 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       <Box>
         <Grid item xs={12} mt={3}>
           <Typography variant="h4" sx={{ textAlign: 'center', fontWeight: 'bold', color: '#ff3300' }}>
-            基本情報
+            {ITEMS.INPUT.INPUT_BACIC}
           </Typography>
         </Grid>
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>お名前</Typography>
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_NAME}</Typography>
         <OrangeTextField
           fullWidth
           {...register('visName')}
           error={'visName' in errors}
           helperText={errors.visName?.message}
         />
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>会社名</Typography>
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_COMPANY}</Typography>
         <OrangeTextField
           fullWidth
           {...register('companyName')}
           error={'companyName' in errors}
           helperText={errors.companyName?.message}
         />
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>連絡先（電話番号）</Typography>
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_CONTACT}</Typography>
         <OrangeTextField
           fullWidth
           {...register('tel')}
           error={'tel' in errors}
           helperText={errors.tel?.message}
         />
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>同行人数</Typography>
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_COMPANION}</Typography>
         <OrangeTextField
           fullWidth
           {...register('numberWith')}
@@ -193,10 +194,10 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
         />
         <Grid item xs={12} mt={3}>
           <Typography variant="h4" sx={{ textAlign: 'center', fontWeight: 'bold', color: '#ff3300' }}>
-            ご用件
+            {ITEMS.INPUT.INPUT_BUSINESS}
           </Typography>
         </Grid>
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>面会者</Typography>
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_VISITORS}</Typography>
         <Autocomplete
           value={comboValue}
           inputValue={inputValue}
@@ -209,7 +210,7 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
           }}
           renderInput={(params) => <OrangeTextField {...params} />}
         />
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>ご用件</Typography>
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_BUSINESS}</Typography>
         <OrangeTextField
           fullWidth
           {...register('reason')}
@@ -219,8 +220,8 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       </Box>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
-        <CancleButton onClick={onCancle} variant="contained" sx={{ width: '200px', height: '50px', fontWeight: 'bold' }}>キャンセル</CancleButton>
-        <AisButton type="submit" variant="contained" sx={{ width: '200px', height: '50px', fontWeight: 'bold' }}>次へ</AisButton>
+        <CancleButton onClick={onCancle} variant="contained" sx={{ width: '200px', height: '50px', fontWeight: 'bold' }}>{ITEMS.INPUT.INPUT_CANCEL}</CancleButton>
+        <AisButton type="submit" variant="contained" sx={{ width: '200px', height: '50px', fontWeight: 'bold' }}>{ITEMS.INPUT.INPUT_NEXT}</AisButton>
       </Box>
 
     </form>

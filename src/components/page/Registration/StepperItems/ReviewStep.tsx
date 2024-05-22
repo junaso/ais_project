@@ -5,6 +5,7 @@ import { Box, Button, Grid, Table, TableBody, TableCell, TableContainer, TableRo
 import type { FormStep, VisitRecord } from 'types/visitRecord'
 
 import 'styles/reviewStep.css'
+import { ITEMS } from 'constant/items'
 
 interface ReviewStepProps {
   data: VisitRecord | undefined
@@ -35,27 +36,27 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
             {data && (
               <>
                 <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>お名前</Typography></TableCell>
+                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_NAME}</Typography></TableCell>
                   <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.visName}</Typography></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>会社名</Typography></TableCell>
+                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_COMPANY}</Typography></TableCell>
                   <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.companyName}</Typography></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>同行人数</Typography></TableCell>
-                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.numberWith}名</Typography></TableCell>
+                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_COMPANITON}</Typography></TableCell>
+                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.numberWith}{ITEMS.REVIEW.REVIEW_MANY}</Typography></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>連絡先（電話番号）</Typography></TableCell>
+                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_CONTACT}</Typography></TableCell>
                   <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.tel}</Typography></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>面会者（弊社担当者）</Typography></TableCell>
+                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_OURCOMPANY}</Typography></TableCell>
                   <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.empNo}</Typography></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>ご用件</Typography></TableCell>
+                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_BUSINESS}</Typography></TableCell>
                   <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.reason}</Typography></TableCell>
                 </TableRow>
               </>
@@ -70,8 +71,8 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
             alignItems: 'center',
             justifyItems: 'center'
           }}>
-          <Button onClick={handlePrevious} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>前へ</Button>
-          <Button onClick={handleCreateVisitRecord} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>登録</Button>
+          <Button onClick={handlePrevious} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_FORTH}</Button>
+          <Button onClick={handleCreateVisitRecord} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_REGISTER}</Button>
         </Box>
       </TableContainer>
     </Grid>
