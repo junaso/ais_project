@@ -1,7 +1,9 @@
 import React, { SyntheticEvent, useEffect, useState } from 'react'
 
 // material-ui
-import { Typography, TextField, Button, Box, Grid, Autocomplete } from '@mui/material'
+import { Typography, Box, Grid, Autocomplete } from '@mui/material'
+
+import 'styles/common.css'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
@@ -9,8 +11,9 @@ import * as yup from 'yup'
 
 import type { VisitRecord, FormStep } from 'types/visitRecord'
 
-import { mockFormData } from 'mocks/employeeMock'
 import { Employee } from 'types/employee'
+import { AisButton, CancleButton, OrangeTextField } from 'styles/muStyle'
+import { useEmployee } from 'hooks'
 
 interface InputStepProps {
   step: FormStep
@@ -19,11 +22,12 @@ interface InputStepProps {
   onNext: () => void
   onCancle: () => void
   onUpdateStep: (index: number, step: FormStep) => void
-  onSelectedEmployeeChange: (empNo: number | null) => void // 새로운 prop 추가
-  selectedEmployeeEmpNo: number | null
 }
 
-const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, defaultValues, onNext, onCancle, onUpdateStep, onSelectedEmployeeChange }) => {
+const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, defaultValues, onNext, onCancle, onUpdateStep }) => {
+
+  const { employeeList, onCreateEmployeeList } = useEmployee()
+
   const schema = yup.object({
     visNo: yup
       .number()
@@ -78,7 +82,9 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       .notRequired(),
   })
 
-  const [value, setValue] = useState<Employee | null>(null)
+  const [comboValue, setComboValue] =
+    useState<Employee | undefined>(
+      step.data?.empNo ? employeeList.find(employee => employee.empNo === step.data?.empNo) : undefined)
   const [inputValue, setInputValue] = useState('')
 
   const handleInputChange = (
@@ -90,19 +96,16 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
 
   const handleOptionSelect = (option: Employee | null) => {
     if (option) {
-      setValue(option)
+      setComboValue(option)
       setInputValue(`${option.lastName} ${option.firstName}`)
-      onSelectedEmployeeChange(option.empNo) // 選択した面会者のempNoを送る
-      console.log("Selected Employee's empNo:", option.empNo)
     } else {
-      setValue(null)
+      setComboValue(undefined)
       setInputValue('')
-      onSelectedEmployeeChange(null) // 選択解除、選択しないとnullを送る
-      console.log("Selected Employee's empNo: null")
     }
   }
 
   const {
+    setValue,
     handleSubmit,
     register,
     formState: { errors, isValid },
@@ -143,62 +146,71 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isValid])
 
+  useEffect(() => {
+    onCreateEmployeeList()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    setValue('empNo', comboValue?.empNo)
+  }, [comboValue, setValue])
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Box sx={{ display: 'grid', gap: 2, justifyContent: 'center' }}>
+      <Box>
         <Grid item xs={12} mt={3}>
-          <Typography variant="h5" sx={{ textAlign: 'center' }}>
+          <Typography variant="h4" sx={{ textAlign: 'center', fontWeight: 'bold', color: '#ff3300' }}>
             基本情報
           </Typography>
         </Grid>
-        <Typography sx={{ fontWeight: 'bold', mt: 3 }}>お名前</Typography>
-        <TextField
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>お名前</Typography>
+        <OrangeTextField
           fullWidth
           {...register('visName')}
           error={'visName' in errors}
           helperText={errors.visName?.message}
         />
-        <Typography sx={{ fontWeight: 'bold', mt: 3 }}>会社名</Typography>
-        <TextField
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>会社名</Typography>
+        <OrangeTextField
           fullWidth
           {...register('companyName')}
           error={'companyName' in errors}
           helperText={errors.companyName?.message}
         />
-        <Typography sx={{ fontWeight: 'bold', mt: 3 }}>連絡先（電話番号）</Typography>
-        <TextField
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>連絡先（電話番号）</Typography>
+        <OrangeTextField
           fullWidth
           {...register('tel')}
           error={'tel' in errors}
           helperText={errors.tel?.message}
         />
-        <Typography sx={{ fontWeight: 'bold', mt: 3 }}>同行人数</Typography>
-        <TextField
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>同行人数</Typography>
+        <OrangeTextField
           fullWidth
           {...register('numberWith')}
           error={'numberWith' in errors}
           helperText={errors.numberWith?.message}
         />
         <Grid item xs={12} mt={3}>
-          <Typography variant="h5" sx={{ textAlign: 'center' }}>
+          <Typography variant="h4" sx={{ textAlign: 'center', fontWeight: 'bold', color: '#ff3300' }}>
             ご用件
           </Typography>
         </Grid>
-        <Typography sx={{ fontWeight: 'bold', mt: 3 }}>面会者</Typography>
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>面会者</Typography>
         <Autocomplete
-          value={value}
+          value={comboValue}
           inputValue={inputValue}
           onInputChange={handleInputChange}
           onChange={(event, newValue) => handleOptionSelect(newValue)}
-          options={mockFormData}
+          options={employeeList}
           getOptionLabel={(option: Employee) => {
             const { lastName, firstName, lastKanaName, firstKanaName } = option
             return `${lastName} ${firstName} (${lastKanaName} ${firstKanaName})`
           }}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) => <OrangeTextField {...params} />}
         />
-        <Typography sx={{ fontWeight: 'bold', mt: 3 }}>ご用件</Typography>
-        <TextField
+        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>ご用件</Typography>
+        <OrangeTextField
           fullWidth
           {...register('reason')}
           error={'reason' in errors}
@@ -207,8 +219,8 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       </Box>
 
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
-        <Button onClick={onCancle}sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>キャンセル</Button>
-        <Button type="submit" sx={{ width: '200px', height: '40px', fontWeight: 'bold' }}>次へ</Button>
+        <CancleButton onClick={onCancle} variant="contained" sx={{ width: '200px', height: '50px', fontWeight: 'bold' }}>キャンセル</CancleButton>
+        <AisButton type="submit" variant="contained" sx={{ width: '200px', height: '50px', fontWeight: 'bold' }}>次へ</AisButton>
       </Box>
 
     </form>

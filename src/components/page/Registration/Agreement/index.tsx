@@ -4,7 +4,7 @@ import 'styles/common.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ITEMS } from 'constant/items'
-import { AgreementButton, PrivacyCheckbox } from 'styles/muStyle'
+import { AisButton, PrivacyCheckbox } from 'styles/muStyle'
 
 type AgreementProps = {
   onStart: () => void
@@ -57,9 +57,9 @@ const Agreement = ({ onStart }: AgreementProps) => {
           />
           <Link href="/privacy-policy" className="blue-text">プライバシーポリシー</Link>同義</Typography>
         <CardActions className='button'>
-          <AgreementButton size="large" variant="contained" onClick={handleStart} disabled={!agreed}>
+          <AisButton size="large" variant="contained" onClick={handleStart} disabled={!agreed}>
             登録開始
-          </AgreementButton>
+          </AisButton>
         </CardActions>
       </CardContent>
     </Card>

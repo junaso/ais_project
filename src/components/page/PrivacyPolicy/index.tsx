@@ -3,7 +3,7 @@ import 'styles/common.css'
 import Image from "next/image"
 import Link from "next/link"
 import { ITEMS } from "constant/items"
-import { AgreementButton } from "styles/muStyle"
+import { AisButton } from "styles/muStyle"
 
 const PrivacyPolicy = () => {
 
@@ -91,7 +91,7 @@ const PrivacyPolicy = () => {
         </Typography>
         <CardActions style={{ position: 'fixed', bottom: 20, right: 20 }}>
           <Link href="/registration">
-            <AgreementButton size="large" variant="contained">戻る</AgreementButton>
+            <AisButton size="large" variant="contained">戻る</AisButton>
           </Link>
         </CardActions>
       </CardContent>
