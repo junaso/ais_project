@@ -56,3 +56,49 @@
 .blue-text {
     color: blue;
 }
+
+.QontoConnector-alternativeLabel {
+    top: 10px;
+    left: calc(-50% + 16px);
+    right: calc(50% + 16px);
+  }
+  
+  .QontoConnector-active .QontoConnector-line {
+    border-color: #784af4;
+  }
+  
+  .QontoConnector-completed .QontoConnector-line {
+    border-color: #784af4;
+  }
+  
+  .QontoConnector-line {
+    border-color: #eaeaf0;
+    border-top-width: 3px;
+    border-radius: 1px;
+  }
+  
+  .QontoStepIconRoot {
+    color: #eaeaf0;
+    display: flex;
+    height: 22px;
+    align-items: center;
+  }
+  
+  .QontoStepIconRoot.active {
+    color: #784af4;
+    background-color: orange; /* アクティブなステップの背景色をオレンジに変更 */
+  }
+  
+  .QontoStepIcon-completedIcon {
+    color: #784af4;
+    z-index: 1;
+    font-size: 18px;
+  }
+  
+  .QontoStepIcon-circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+  }
+  
