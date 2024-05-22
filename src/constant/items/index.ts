@@ -74,9 +74,35 @@ export const ITEMS = {
 
     FINISH: {
         FINISH_A: 'ご来訪頂きありがとうございます。',
-        FINISH_B: '入室登録を完了致しました。'
-    }
+        FINISH_B: '入室登録を完了致しました。',
+        FINISH_C: '様',
+        FINISH_D: '亜細亜情報システム',
+        FINISH_E: 'ホームページ',
+    },
 
+    INPUT:{
+        INPUT_BACIC: '基本情報',
+        INPUT_NAME: 'お名前',
+        INPUT_COMPANY: '会社名',
+        INPUT_CONTACT: '連絡先（電話番号）',
+        INPUT_COMPANION: '同行人数',
+        INPUT_BUSINESS: 'ご用件',
+        INPUT_VISITORS: '面会者',
+        INPUT_CANCEL: 'キャンセル',
+        INPUT_NEXT: '次へ',
+    },
+
+    REVIEW: {
+        REVIEW_NAME: 'お名前',
+        REVIEW_COMPANY: '会社名',
+        REVIEW_COMPANITON: '同行人数',
+        REVIEW_MANY: '名',
+        REVIEW_CONTACT: '連絡先（電話番号）',
+        REVIEW_OURCOMPANY: '面会者（弊社担当）',
+        REVIEW_BUSINESS: 'ご用件',
+        REVIEW_FORTH: '前へ',
+        REVIEW_REGISTER: '登録',
+    }
 }
 
 

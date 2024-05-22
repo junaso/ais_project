@@ -22,7 +22,7 @@ const FinishStep = React.forwardRef<HTMLButtonElement, FinishStepProps>(({ visNa
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography variant="h6" align="center" style={{ color: 'orange' }} mt={6} mb={8}>
-            {visName}<span style={{ color: 'black' }}>様</span>
+            {visName}<span style={{ color: 'black' }}>{ITEMS.FINISH.FINISH_C}</span>
           </Typography>
           <Typography variant="h6" align="center" mt={6} mb={8}>
             {ITEMS.FINISH.FINISH_A}<br />
@@ -33,8 +33,8 @@ const FinishStep = React.forwardRef<HTMLButtonElement, FinishStepProps>(({ visNa
           <Stack direction="row" justifyContent="center" alignItems="center" spacing={1}>
             <Button onClick={handleCancel} variant="contained" style={{ background: '#ff7961' }} size='large'>
               <HomeIcon sx={{ marginRight: 2, fontSize: 40 }} />
-              亜細亜情報システム<br />
-              ホームページ
+              {ITEMS.FINISH.FINISH_D}<br />
+              {ITEMS.FINISH.FINISH_E}
             </Button>
           </Stack>
         </Grid>
