@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { Box } from "@mui/material"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,9 +21,7 @@ export default function RootLayout({
         <meta charSet="utf-8"></meta>
       </head>
       <body className={inter.className}>
-          <Box>
-            {children}
-          </Box>
+          {children}
       </body>
     </html>
   )

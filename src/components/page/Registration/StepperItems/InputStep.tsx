@@ -219,15 +219,13 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
           {...register('reason')}
           error={'reason' in errors}
           helperText={errors.reason?.message}
-          
+
         />
       </Box>
-
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
-        <CancleButton onClick={onCancle} variant="contained" sx={{ width: '200px', height: '50px', fontWeight: 'bold' }}>{ITEMS.INPUT.INPUT_CANCEL}</CancleButton>
-        <AisButton type="submit" variant="contained" sx={{ width: '200px', height: '50px', fontWeight: 'bold' }}>{ITEMS.INPUT.INPUT_NEXT}</AisButton>
+        <CancleButton onClick={onCancle} variant="contained" sx={{ width: '180px', height: '50px', fontWeight: 'bold' }}>{ITEMS.INPUT.INPUT_CANCEL}</CancleButton>
+        <AisButton type="submit" variant="contained" sx={{ width: '180px', height: '50px', fontWeight: 'bold' }}>{ITEMS.INPUT.INPUT_NEXT}</AisButton>
       </Box>
-
     </form>
   )
 })
