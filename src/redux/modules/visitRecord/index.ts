@@ -1,15 +1,39 @@
 import { createSlice, createAsyncThunk, createAction } from '@reduxjs/toolkit'
 import { API } from 'constant/api'
 import { RootState } from 'redux/store'
-import { FormStep, VisitRecord, VisitRecordState } from 'types/visitRecord'
+import { FormStep, LoginRequest, VisitRecord, VisitRecordState } from 'types/visitRecord'
 import { api } from 'utill/axios'
+
+export const fetchLogin = createAsyncThunk('registration/fetchLogin', async () => {
+  try {
+
+    const data:LoginRequest = {
+      empId:'asiainfo',
+      password:'abcd1234'
+    }
+
+    const response = await api.post(API.LOGIN, data, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+
+    const token = response.data.token
+
+    localStorage.setItem('jwtToken', token)
+    
+  } catch (error) {
+    console.error('Error fetchLogin:', error)
+    throw error
+  }
+})
 
 export const createVisitRecord = createAsyncThunk(
   'registration/createVisitRecord',
-  async (visitRecord: VisitRecord, { rejectWithValue }
+  async (data: VisitRecord, { rejectWithValue }
   ) => {
     try {
-      const response = await api.post(API.VISIT_RECORD, { visitRecord })
+      const response = await api.post(API.VISIT_RECORD, data, {
+        headers: { 'Content-Type': 'application/json' }
+      })
       return response.data
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'An error has occurred.')
@@ -59,8 +83,6 @@ const initialState: VisitRecordState = {
   activeStep: 0,
 }
 
-
-
 export const registrationSlice = createSlice({
   name: 'visitRecord',
   initialState,
@@ -76,7 +98,6 @@ export const registrationSlice = createSlice({
         state.activeStep = index
       })
       .addCase(resetVisitRecord, (state) => {
-        // visitRecord 状態を初期化するロジック追加
         state.steps = [
           {
             label: '入力',
@@ -94,7 +115,7 @@ export const registrationSlice = createSlice({
             completed: false,
           },
         ],
-        state.activeStep = initialState.activeStep
+          state.activeStep = initialState.activeStep
       })
   },
 })

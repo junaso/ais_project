@@ -4,6 +4,7 @@ import {
   setActiveStep,
   registrationSelector,
   resetVisitRecord,
+  fetchLogin,
 } from 'redux/modules/visitRecord'
 import { useDispatch, useSelector } from 'redux/store'
 import { FormStep, VisitRecord } from 'types/visitRecord'
@@ -30,6 +31,10 @@ const useVisitRecord = () => {
     dispatch(resetVisitRecord())
   }
 
+  const onLoginResult = () => {
+    dispatch(fetchLogin())
+  }
+
   return {
     onUpdateStep,
     onSetActiveStep,
@@ -37,6 +42,7 @@ const useVisitRecord = () => {
     activeStep,
     onCreateVisitRecord,
     onResetData,
+    onLoginResult,
   }
 }
 
