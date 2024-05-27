@@ -34,4 +34,7 @@ export const OrangeTextField = styled(TextField)({
         borderColor: 'orange',
       },
     },
+    '& .Mui-disabled': {
+      color: 'orange !important',
+    },
   })

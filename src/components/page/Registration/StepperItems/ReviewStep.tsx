@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { Box, Button, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
+import { Box,  Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 
 import type { FormStep, VisitRecord } from 'types/visitRecord'
 
 import 'styles/reviewStep.css'
 import { ITEMS } from 'constant/items'
+import { AisButton, CancleButton,  } from 'styles/muStyle'
 
 interface ReviewStepProps {
   data: VisitRecord | undefined
@@ -16,7 +17,7 @@ interface ReviewStepProps {
 }
 
 const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onPrevious }) => {
-  
+
   const handleCreateVisitRecord = () => {
     if (data) {
       onUpdateData(data)
@@ -29,7 +30,8 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
   }
 
   return (
-    <Grid container spacing={3}>
+    <div style={{ backgroundColor: '#FFF3E2', minHeight: '100vh', padding: '20px' }}>
+    <Grid>
       <TableContainer>
         <Table>
           <TableBody>
@@ -57,7 +59,9 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
                 </TableRow>
                 <TableRow>
                   <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_BUSINESS}</Typography></TableCell>
-                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.reason}</Typography></TableCell>
+                  <TableCell sx={{ maxWidth: 250, wordWrap: 'break-word', padding: 1 }}>
+                    <Typography variant="body1" sx={{ color: 'orange' }}>{data.reason}</Typography>
+                  </TableCell>
                 </TableRow>
               </>
             )}
@@ -69,13 +73,15 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
             justifyContent: 'center',
             gap: 2, mt: 3,
             alignItems: 'center',
-            justifyItems: 'center'
+            justifyItems: 'center',
           }}>
-          <Button onClick={handlePrevious} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_FORTH}</Button>
-          <Button onClick={handleCreateVisitRecord} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_REGISTER}</Button>
+          <CancleButton onClick={handlePrevious} sx={{ width: '150px', height: '40px', fontWeight: 'bold', color: 'white' }}>{ITEMS.REVIEW.REVIEW_FORTH}</CancleButton>
+          <AisButton onClick={handleCreateVisitRecord} sx={{ width: '150px', height: '40px', fontWeight: 'bold', color: 'white' }}>{ITEMS.REVIEW.REVIEW_REGISTER}</AisButton>
+
         </Box>
       </TableContainer>
     </Grid>
+    </div>
   )
 })
 

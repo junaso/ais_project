@@ -23,6 +23,7 @@ const Agreement = ({ onStart }: AgreementProps) => {
   }
 
   return (
+    <div style={{ backgroundColor: '#FFF3E2', minHeight: '100vh', padding: '20px' }}>
     <Card className='container'>
       <CardContent>
         <Image src="/img/BI.png" alt="BI Image" className="bi-image" width={150} height={110} />
@@ -63,6 +64,7 @@ const Agreement = ({ onStart }: AgreementProps) => {
         </CardActions>
       </CardContent>
     </Card>
+    </div>
   )
 }
 

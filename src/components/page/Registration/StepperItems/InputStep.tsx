@@ -212,10 +212,14 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
         />
         <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_BUSINESS}</Typography>
         <OrangeTextField
+          id="outlined-multiline-static"
+          rows={5}
+          multiline
           fullWidth
           {...register('reason')}
           error={'reason' in errors}
           helperText={errors.reason?.message}
+          
         />
       </Box>
 
