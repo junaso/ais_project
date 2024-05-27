@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 
 import { Box, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 
@@ -6,6 +6,7 @@ import type { FormStep, VisitRecord } from 'types/visitRecord'
 
 import 'styles/reviewStep.css'
 import { ITEMS } from 'constant/items'
+import { Employee } from 'types/employee'
 import { AisButton, CancleButton, } from 'styles/muStyle'
 import ScrollTop from 'components/organisms/ScrollTop'
 
@@ -15,21 +16,32 @@ interface ReviewStepProps {
   onUpdateStep: (index: number, step: FormStep) => void
   onUpdateData: (data: VisitRecord) => void
   onPrevious: () => void
+  employeeList: Employee[]
 }
 
-const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onPrevious }) => {
+const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onPrevious, employeeList }) => {
 
-  const contentRef = useRef<HTMLDivElement>(null)
+  const handleCreateVisitRecord = async () => {
 
-  useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.scrollTop = 0
-    }
-  }, [])
+    if (data && employeeList) {
+      const foundEmployee = employeeList.find(employee => employee.empNo === data.empNo)
+      if (foundEmployee) {
+        onUpdateData(data)
 
-  const handleCreateVisitRecord = () => {
-    if (data) {
-      onUpdateData(data)
+        const formData = new FormData()
+        formData.append('to', foundEmployee.mail)
+        formData.append('subject', ITEMS.REGISTER_MAIL.SEND_MAIL_SUBJECT)
+        formData.append('text', ITEMS.REGISTER_MAIL.SEND_MAIL_TEXT)
+
+        try {
+          await fetch('/api/send-mail', {
+            method: 'POST',
+            body: formData
+          }).then(res => res.json())
+        } catch (error) {
+          console.error('error', error)
+        }
+      }
     }
     onNext()
   }

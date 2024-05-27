@@ -3,63 +3,53 @@ import { Employee } from "types/employee"
 export const mockFormData: Employee[] =
 
     [{
-        empNo: 131313,
-        empId: 'asdf',
-        lastName: 'jain',
-        firstName: 'hwang',
+        empNo: 123456,
+        empId: 'hwangji',
+        lastName: '慈印',
+        firstName: '黄',
         lastKanaName: 'ジャイン',
         firstKanaName: 'ファン',
         securityLevel: 1,
-        mail: 'asdf@ais-info.co.jp'
+        mail: 'hwangji@ais-info.co.jp'
     },
     {
-        empNo: 258012,
-        empId: 'qwer',
-        lastName: 'hyejeong',
-        firstName: 'son',
+        empNo: 789012,
+        empId: 'sonhj',
+        lastName: '慧禎',
+        firstName: '孫',
         lastKanaName: 'へジョン',
         firstKanaName: 'ソン',
         securityLevel: 3,
-        mail: 'qwer@ais-info.co.jp'
+        mail: 'sonhj@ais-info.co.jp'
     },
     {
-        empNo: 333333,
-        empId: 'zcxv',
-        lastName: 'han',
-        firstName: 'seongtak',
+        empNo: 345678,
+        empId: 'hanst',
+        lastName: '聖鐸',
+        firstName: '韓',
         lastKanaName: 'ソンタク',
         firstKanaName: 'ハン',
         securityLevel: 1,
-        mail: 'zxcv@ais-info.co.jp'
+        mail: 'hanst@ais-info.co.jp'
     },
     {
-        empNo: 139356,
-        empId: 'bnvn',
-        lastName: 'gyeoli',
-        firstName: 'kim',
-        lastKanaName: 'ギョリ',
+        empNo: 901234,
+        empId: 'kimsh',
+        lastName: '琇賢',
+        firstName: '金',
+        lastKanaName: 'スヒョン',
         firstKanaName: 'キム',
         securityLevel: 1,
-        mail: 'bnvn@ais-info.co.jp'
+        mail: 'kimsh@ais-info.co.jp'
     },
     {
-        empNo: 259453,
-        empId: 'oiuy',
-        lastName: 'enji',
-        firstName: 'hong',
+        empNo: 555555,
+        empId: 'honej',
+        lastName: 'ウンジ',
+        firstName: 'ホン',
         lastKanaName: 'ウンジ',
         firstKanaName: 'ホン',
         securityLevel: 1,
-        mail: 'oiuy@ais-info.co.jp'
-    },
-    {
-        empNo: 978223,
-        empId: 'ghke',
-        lastName: 'ryouma',
-        firstName: 'suzuki',
-        lastKanaName: 'リョウマ',
-        firstKanaName: 'スズキ',
-        securityLevel: 1,
-        mail: 'ghke@ais-info.co.jp'
-    },
+        mail: 'hongej@ais-info.co.jp'
+    }
     ]

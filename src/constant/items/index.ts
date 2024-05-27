@@ -80,7 +80,12 @@ export const ITEMS = {
         FINISH_E: 'ホームページ',
     },
 
-    INPUT:{
+    REGISTER_MAIL: {
+        SEND_MAIL_SUBJECT: 'TEST用のメールです。',
+        SEND_MAIL_TEXT: '今、入室登録システムで登録したらメールが送れるシステムのテスト中です。'
+    },
+
+    INPUT: {
         INPUT_BACIC: '基本情報',
         INPUT_NAME: 'お名前',
         INPUT_COMPANY: '会社名',
