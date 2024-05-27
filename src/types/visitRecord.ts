@@ -1,14 +1,16 @@
+import { Employee } from "./employee"
+
 export type VisitRecord = {
   visNo: number,
   visName: string,
-  companyName?: string | null,
+  companyName?: string,
   tel: string,
   numberWith: number,
   isHost: boolean,
-  empNo?: number | null,
-  reason?: string | null,
-  checkIn: string,
-  checkOut?: string | null
+  empNo?: number,
+  reason?: string,
+  checkIn?: string,
+  checkOut?: string
 }
 
 export type VisitRecordState = {
@@ -23,3 +25,15 @@ export type FormStep = {
   error: boolean
   data?: VisitRecord
 }
+
+export type LoginRequest = {
+  empId: string,
+  password: string
+}
+
+export type LoginResponse = {
+  message: string,
+  employee: Employee
+  token: string
+}
+

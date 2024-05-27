@@ -43,9 +43,7 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
     companyName: yup
       .string()
       .typeError("会社名を入力してください。")
-      .max(256, "256文字までの文字を入力できます。")
-      .nullable()
-      .notRequired(),
+      .max(256, "256文字までの文字を入力できます。"),
     tel: yup
       .string()
       .typeError("電話番号を数字と(-)で入力して下さい。")
@@ -63,24 +61,17 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       .required("error message"),
     empNo: yup
       .number()
-      .typeError("error message")
-      .nullable()
-      .notRequired(),
+      .typeError("error message"),
     reason: yup
       .string()
       .typeError("ご用件をを入力してください。")
-      .max(9999, "9999文字まで入力できます。")
-      .nullable()
-      .notRequired(),
+      .max(9999, "9999文字まで入力できます。"),
     checkIn: yup
       .string()
-      .typeError("error message")
-      .required("error message"),
+      .typeError("error message"),
     checkOut: yup
       .string()
       .typeError("error message")
-      .nullable()
-      .notRequired(),
   })
 
   const [comboValue, setComboValue] =
@@ -117,14 +108,14 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       ? {
         visNo: step.data.visNo,
         visName: step.data.visName,
-        companyName: step.data.companyName ?? null,
+        companyName: step.data.companyName ?? undefined,
         tel: step.data.tel,
         numberWith: step.data.numberWith,
         isHost: step.data.isHost,
-        empNo: step.data.empNo ?? null,
-        reason: step.data.reason ?? null,
-        checkIn: step.data.checkIn,
-        checkOut: step.data.checkOut ?? null,
+        empNo: step.data.empNo ?? undefined,
+        reason: step.data.reason ?? undefined,
+        checkIn: step.data.checkIn ?? undefined,
+        checkOut: step.data.checkOut ?? undefined,
       }
       : defaultValues,
   })

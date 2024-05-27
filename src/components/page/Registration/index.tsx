@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Grid, StepLabel, Stepper, Step, Typography } from '@mui/material'
 
@@ -23,6 +23,7 @@ const Registration = () => {
     steps,
     activeStep,
     onCreateVisitRecord,
+    onLoginResult,
   } = useVisitRecord()
 
   const visitRecord: VisitRecord = {
@@ -34,8 +35,8 @@ const Registration = () => {
     isHost: false,
     empNo: 0,
     reason: "",
-    checkIn: "default",
-    checkOut: "default",
+    checkIn: "",
+    checkOut: "",
   }
 
   const refInput = React.createRef<HTMLButtonElement>()
@@ -103,6 +104,11 @@ const Registration = () => {
         throw new Error('Unknown step')
     }
   }
+
+  useEffect(() => {
+    onLoginResult()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     isOpen ? (
