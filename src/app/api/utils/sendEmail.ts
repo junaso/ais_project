@@ -26,8 +26,6 @@ const sendEmail = async ({ to, subject, text }: EmailOptions) => {
     text: text,
   }
 
-  console.log(transporter, mailOptions)
-
   try {
     const info = await transporter.sendMail(mailOptions)
     console.log('Email sent: ' + info.response)

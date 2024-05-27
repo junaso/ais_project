@@ -1,12 +1,14 @@
 import React from 'react'
 
-import { Box, Button, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
+import { Box, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material'
 
 import type { FormStep, VisitRecord } from 'types/visitRecord'
 
 import 'styles/reviewStep.css'
 import { ITEMS } from 'constant/items'
 import { Employee } from 'types/employee'
+import { AisButton, CancleButton, } from 'styles/muStyle'
+import ScrollTop from 'components/organisms/ScrollTop'
 
 interface ReviewStepProps {
   data: VisitRecord | undefined
@@ -23,25 +25,19 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
 
     if (data && employeeList) {
       const foundEmployee = employeeList.find(employee => employee.empNo === data.empNo)
-      console.log('found employee:', foundEmployee)
-      console.log('found email:', foundEmployee?.mail)
-
-      if(foundEmployee){
+      if (foundEmployee) {
         onUpdateData(data)
 
         const formData = new FormData()
-        formData.append('to',foundEmployee.mail)
+        formData.append('to', foundEmployee.mail)
         formData.append('subject', ITEMS.REGISTER_MAIL.SEND_MAIL_SUBJECT)
-        formData.append('text',ITEMS.REGISTER_MAIL.SEND_MAIL_TEXT)
+        formData.append('text', ITEMS.REGISTER_MAIL.SEND_MAIL_TEXT)
 
         try {
-          const response = await fetch('/api/send-mail',{
+          await fetch('/api/send-mail', {
             method: 'POST',
-            body:formData
-          }).then(res=>res.json())
-
-          console.log(response,"aaaaaaaa")
-
+            body: formData
+          }).then(res => res.json())
         } catch (error) {
           console.error('error', error)
         }
@@ -55,53 +51,58 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
   }
 
   return (
-    <Grid container spacing={3}>
-      <TableContainer>
-        <Table>
-          <TableBody>
-            {data && (
-              <>
-                <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>お名前</Typography></TableCell>
-                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.visName}</Typography></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>会社名</Typography></TableCell>
-                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.companyName}</Typography></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>同行人数</Typography></TableCell>
-                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.numberWith}名</Typography></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>連絡先（電話番号）</Typography></TableCell>
-                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.tel}</Typography></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>面会者（弊社担当者）</Typography></TableCell>
-                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.empNo}</Typography></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>ご用件</Typography></TableCell>
-                  <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.reason}</Typography></TableCell>
-                </TableRow>
-              </>
-            )}
-          </TableBody>
-        </Table>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: 2, mt: 3,
-            alignItems: 'center',
-            justifyItems: 'center'
-          }}>
-          <Button onClick={handlePrevious} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>前へ</Button>
-          <Button onClick={handleCreateVisitRecord} sx={{ width: '150px', height: '40px', fontWeight: 'bold' }}>登録</Button>
-        </Box>
-      </TableContainer>
-    </Grid>
+    <ScrollTop>
+      <Grid sx={{ backgroundColor: '#FFF3E2', minHeight: '100vh', padding: '20px' }}>
+        <TableContainer>
+          <Table>
+            <TableBody>
+              {data && (
+                <>
+                  <TableRow>
+                    <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_NAME}</Typography></TableCell>
+                    <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.visName}</Typography></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_COMPANY}</Typography></TableCell>
+                    <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.companyName}</Typography></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_COMPANITON}</Typography></TableCell>
+                    <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.numberWith}{ITEMS.REVIEW.REVIEW_MANY}</Typography></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_CONTACT}</Typography></TableCell>
+                    <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.tel}</Typography></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_OURCOMPANY}</Typography></TableCell>
+                    <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.empNo}</Typography></TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_BUSINESS}</Typography></TableCell>
+                    <TableCell sx={{ maxWidth: 250, wordWrap: 'break-word', padding: 1 }}>
+                      <Typography variant="body1" sx={{ color: 'orange' }}>{data.reason}</Typography>
+                    </TableCell>
+                  </TableRow>
+                </>
+              )}
+            </TableBody>
+          </Table>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 2, mt: 3,
+              alignItems: 'center',
+              justifyItems: 'center',
+            }}>
+            <CancleButton onClick={handlePrevious} sx={{ width: '180px', height: '50px', fontWeight: 'bold', color: 'white' }}>{ITEMS.REVIEW.REVIEW_FORTH}</CancleButton>
+            <AisButton onClick={handleCreateVisitRecord} sx={{ width: '180px', height: '50px', fontWeight: 'bold', color: 'white' }}>{ITEMS.REVIEW.REVIEW_REGISTER}</AisButton>
+
+          </Box>
+        </TableContainer>
+      </Grid>
+    </ScrollTop>
   )
 })
 

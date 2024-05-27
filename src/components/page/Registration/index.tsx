@@ -111,11 +111,21 @@ const Registration = () => {
           {steps.map((item) => {
             const stepLabelProps = {
               option: item.option,
-              error: item.error,
+              error: item.error
             }
             return (
-              <Step key={item.label}>
-                <StepLabel {...stepLabelProps}>
+              <Step key={item.label} 
+              sx={{
+                "& .MuiStepLabel-root .Mui-active": {
+                    color: item.error ? "red" : "#ff6600"
+                },
+                "& .MuiStepLabel-root .Mui-completed": {
+                  color: "#ff6600"
+              },
+            }}
+              >
+                
+                <StepLabel {...stepLabelProps }>
                   <Typography variant="h5">
                     {item.label}
                   </Typography>
