@@ -5,6 +5,8 @@ import { Box, Button, Grid, Table, TableBody, TableCell, TableContainer, TableRo
 import type { FormStep, VisitRecord } from 'types/visitRecord'
 
 import 'styles/reviewStep.css'
+import { ITEMS } from 'constant/items'
+import { Employee } from 'types/employee'
 
 interface ReviewStepProps {
   data: VisitRecord | undefined
@@ -12,13 +14,38 @@ interface ReviewStepProps {
   onUpdateStep: (index: number, step: FormStep) => void
   onUpdateData: (data: VisitRecord) => void
   onPrevious: () => void
+  employeeList: Employee[]
 }
 
-const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onPrevious }) => {
-  
-  const handleCreateVisitRecord = () => {
-    if (data) {
-      onUpdateData(data)
+const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onPrevious, employeeList }) => {
+
+  const handleCreateVisitRecord = async () => {
+
+    if (data && employeeList) {
+      const foundEmployee = employeeList.find(employee => employee.empNo === data.empNo)
+      console.log('found employee:', foundEmployee)
+      console.log('found email:', foundEmployee?.mail)
+
+      if(foundEmployee){
+        onUpdateData(data)
+
+        const formData = new FormData()
+        formData.append('to',foundEmployee.mail)
+        formData.append('subject', ITEMS.REGISTER_MAIL.SEND_MAIL_SUBJECT)
+        formData.append('text',ITEMS.REGISTER_MAIL.SEND_MAIL_TEXT)
+
+        try {
+          const response = await fetch('/api/send-mail',{
+            method: 'POST',
+            body:formData
+          }).then(res=>res.json())
+
+          console.log(response,"aaaaaaaa")
+
+        } catch (error) {
+          console.error('error', error)
+        }
+      }
     }
     onNext()
   }

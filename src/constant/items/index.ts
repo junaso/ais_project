@@ -75,6 +75,11 @@ export const ITEMS = {
     FINISH: {
         FINISH_A: 'ご来訪頂きありがとうございます。',
         FINISH_B: '入室登録を完了致しました。'
+    },
+
+    REGISTER_MAIL: {
+        SEND_MAIL_SUBJECT: 'TEST用のメールです。',
+        SEND_MAIL_TEXT: '今、入室登録システムで登録したらメールが送れるシステムのテスト中です。'
     }
 
 }
