@@ -7,12 +7,8 @@ import type { VisitRecord } from 'types/visitRecord'
 import { useVisitRecord } from 'hooks'
 import 'styles/common.css'
 import Agreement from './Agreement'
-import { RootState, useSelector } from 'redux/store'
-
 
 const Registration = () => {
-  
-  const employeeList = useSelector((state: RootState) => state.employee.employeeList)
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -33,7 +29,7 @@ const Registration = () => {
     tel: "",
     numberWith: 0,
     isHost: false,
-    empNo: 0,
+    empNo: undefined,
     reason: "",
     checkIn: "",
     checkOut: "",
@@ -87,7 +83,6 @@ const Registration = () => {
             onUpdateData={onCreateVisitRecord}
             onUpdateStep={onUpdateStep}
             onPrevious={handlePrevious}
-            employeeList={employeeList}
            />
         )
 
