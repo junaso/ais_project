@@ -14,7 +14,6 @@ lint_job:
     - npm run lint
   only:
     - merge_requests
-    - develop
 
 build_job:
   stage: build
@@ -26,7 +25,6 @@ build_job:
     - npm run build
   only:
     - merge_requests
-    - develop
 
 build_docker:
   stage: build_docker

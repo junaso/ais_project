@@ -81,8 +81,27 @@ export const ITEMS = {
     },
 
     REGISTER_MAIL: {
-        SEND_MAIL_SUBJECT: 'TEST用のメールです。',
-        SEND_MAIL_TEXT: '今、入室登録システムで登録したらメールが送れるシステムのテスト中です。'
+        SEND_MAIL_SUBJECT: '【確認】本社の訪問者が登録されました。',
+        SEND_MAIL_TEXT: (employeeName: string, visName: string) => `
+${employeeName} さん
+
+お疲れ様です。
+
+このメールは入室管理システムからの自動送信メールです。
+ご返信は不要です。
+
+${visName} 様が
+${employeeName} さんを面会者に指定して
+本社に訪問(入室)の登録をしました。
+
+下記の管理ページでご確認ください。
+
+http://ec2-54-252-252-137.ap-southeast-2.compute.amazonaws.com:3000/visit-record
+
+${visName}様が退室された後に退室登録をお願いします。
+
+以上、よろしくお願いします。
+`
     },
 
     INPUT: {

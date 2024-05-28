@@ -9,6 +9,7 @@ import { ITEMS } from 'constant/items'
 import { AisButton, CancleButton, } from 'styles/muStyle'
 import ScrollTop from 'components/organisms/ScrollTop'
 import { useEmployee } from 'hooks'
+import { API } from '../../../../constant/api/index'
 
 interface ReviewStepProps {
   data: VisitRecord | undefined
@@ -32,9 +33,9 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
         const formData = new FormData()
         formData.append('to', foundEmployee.mail)
         formData.append('subject', ITEMS.REGISTER_MAIL.SEND_MAIL_SUBJECT)
-        formData.append('text', ITEMS.REGISTER_MAIL.SEND_MAIL_TEXT)
+        formData.append('text', ITEMS.REGISTER_MAIL.SEND_MAIL_TEXT(foundEmployee.lastName, data.visName))
         try {
-          await fetch('/api/send-mail', {
+          await fetch(API.SEND_MAIL, {
             method: 'POST',
             body: formData
           }).then(res => res.json())
