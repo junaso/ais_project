@@ -1,8 +1,4 @@
-const PAGES = {
-  EMPLOYEE: '/employee',
-  VISIT_RECORD: '/visit-record',
-}
-
-export const ROUTE = {
-  PAGES
+export const PAGES = {
+  PRIVACY_POLICY: '/privacy-policy',
+  REGISTRATION: '/registration',
 }

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ITEMS } from 'constant/items'
 import { AisButton, PrivacyCheckbox } from 'styles/muStyle'
+import { PAGES } from 'constant/route-path'
 
 type AgreementProps = {
   onStart: () => void
@@ -56,7 +57,7 @@ const Agreement = ({ onStart }: AgreementProps) => {
             onChange={handleAgreementChange}
             inputProps={{ 'aria-label': '同義確認' }}
           />
-          <Link href="/privacy-policy" className="blue-text">プライバシーポリシー</Link>同義</Typography>
+          <Link href={PAGES.PRIVACY_POLICY} className="blue-text">プライバシーポリシー</Link>同義</Typography>
         <CardActions className='button'>
           <AisButton size="large" variant="contained" onClick={handleStart} disabled={!agreed}>
             登録開始
