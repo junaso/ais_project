@@ -29,6 +29,11 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
 
   const { employeeList, onCreateEmployeeList } = useEmployee()
 
+  const [comboValue, setComboValue] =
+    useState<Employee | undefined>(
+      step.data?.empNo ? employeeList.find(employee => employee.empNo === step.data?.empNo) : undefined)
+  const [inputValue, setInputValue] = useState('')
+
   const schema = yup.object({
     visNo: yup
       .number()
@@ -74,15 +79,15 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
       .typeError("error message")
   })
 
-  const [comboValue, setComboValue] =
-    useState<Employee | undefined>(
-      step.data?.empNo ? employeeList.find(employee => employee.empNo === step.data?.empNo) : undefined)
-  const [inputValue, setInputValue] = useState('')
-
   const handleInputChange = (
     event: SyntheticEvent<Element, Event>,
     value: string
   ) => {
+
+    if (!value) {
+      setComboValue(undefined)
+    }
+
     setInputValue(value)
   }
 
@@ -144,8 +149,17 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
   }, [])
 
   useEffect(() => {
-    setValue('empNo', comboValue?.empNo)
+
+    if (comboValue) {
+      setValue('empNo', comboValue?.empNo)
+      setValue('isHost', true)
+    } else {
+      setValue('empNo', undefined)
+      setValue('isHost', false)
+    }
+
   }, [comboValue, setValue])
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -214,8 +228,8 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
         />
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
-        <CancleButton onClick={onCancle} variant="contained" sx={{ width: '180px', height: '50px', fontWeight: 'bold' }}>{ITEMS.INPUT.INPUT_CANCEL}</CancleButton>
-        <AisButton type="submit" variant="contained" sx={{ width: '180px', height: '50px', fontWeight: 'bold' }}>{ITEMS.INPUT.INPUT_NEXT}</AisButton>
+        <CancleButton onClick={onCancle} variant="contained">{ITEMS.INPUT.INPUT_CANCEL}</CancleButton>
+        <AisButton type="submit" variant="contained">{ITEMS.INPUT.INPUT_NEXT}</AisButton>
       </Box>
     </form>
   )

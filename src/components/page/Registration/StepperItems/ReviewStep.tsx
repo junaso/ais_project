@@ -6,9 +6,9 @@ import type { FormStep, VisitRecord } from 'types/visitRecord'
 
 import 'styles/reviewStep.css'
 import { ITEMS } from 'constant/items'
-import { Employee } from 'types/employee'
 import { AisButton, CancleButton, } from 'styles/muStyle'
 import ScrollTop from 'components/organisms/ScrollTop'
+import { useEmployee } from 'hooks'
 
 interface ReviewStepProps {
   data: VisitRecord | undefined
@@ -16,23 +16,23 @@ interface ReviewStepProps {
   onUpdateStep: (index: number, step: FormStep) => void
   onUpdateData: (data: VisitRecord) => void
   onPrevious: () => void
-  employeeList: Employee[]
 }
 
-const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onPrevious, employeeList }) => {
+const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data, onNext, onUpdateData, onPrevious }) => {
+
+  const { employeeList } = useEmployee()
+
+  const foundEmployee = employeeList.find(employee => employee.empNo === data?.empNo ? data.empNo : undefined)
 
   const handleCreateVisitRecord = async () => {
 
-    if (data && employeeList) {
-      const foundEmployee = employeeList.find(employee => employee.empNo === data.empNo)
+    if (data) {
       if (foundEmployee) {
         onUpdateData(data)
-
         const formData = new FormData()
         formData.append('to', foundEmployee.mail)
         formData.append('subject', ITEMS.REGISTER_MAIL.SEND_MAIL_SUBJECT)
         formData.append('text', ITEMS.REGISTER_MAIL.SEND_MAIL_TEXT)
-
         try {
           await fetch('/api/send-mail', {
             method: 'POST',
@@ -41,8 +41,11 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
         } catch (error) {
           console.error('error', error)
         }
+      } else {
+        onUpdateData(data)
       }
     }
+
     onNext()
   }
 
@@ -76,7 +79,8 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
                   </TableRow>
                   <TableRow>
                     <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_OURCOMPANY}</Typography></TableCell>
-                    <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>{data.empNo}</Typography></TableCell>
+                    <TableCell><Typography variant="body1" sx={{ color: 'orange' }}>
+                      {foundEmployee ? `${foundEmployee.lastName} ${foundEmployee.firstName}` : '指定なし'}</Typography></TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell><Typography variant="body1" sx={{ fontWeight: 'bold' }}>{ITEMS.REVIEW.REVIEW_BUSINESS}</Typography></TableCell>
@@ -96,8 +100,8 @@ const ReviewStep = React.forwardRef<HTMLButtonElement, ReviewStepProps>(({ data,
               alignItems: 'center',
               justifyItems: 'center',
             }}>
-            <CancleButton onClick={handlePrevious} sx={{ width: '180px', height: '50px', fontWeight: 'bold', color: 'white' }}>{ITEMS.REVIEW.REVIEW_FORTH}</CancleButton>
-            <AisButton onClick={handleCreateVisitRecord} sx={{ width: '180px', height: '50px', fontWeight: 'bold', color: 'white' }}>{ITEMS.REVIEW.REVIEW_REGISTER}</AisButton>
+            <CancleButton onClick={handlePrevious} >{ITEMS.REVIEW.REVIEW_FORTH}</CancleButton>
+            <AisButton onClick={handleCreateVisitRecord} >{ITEMS.REVIEW.REVIEW_REGISTER}</AisButton>
 
           </Box>
         </TableContainer>
