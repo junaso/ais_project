@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ITEMS } from "constant/items"
 import { AisButton } from "styles/muStyle"
+import { PAGES } from "constant/route-path"
 
 const PrivacyPolicy = () => {
 
@@ -90,7 +91,7 @@ const PrivacyPolicy = () => {
           {ITEMS.PRIVACY.PRIVACY_END_D}
         </Typography>
         <CardActions style={{ position: 'fixed', bottom: 20, right: 20 }}>
-          <Link href="/registration">
+          <Link href={PAGES.REGISTRATION}>
             <AisButton size="large" variant="contained">戻る</AisButton>
           </Link>
         </CardActions>
