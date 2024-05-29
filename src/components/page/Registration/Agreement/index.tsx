@@ -57,7 +57,7 @@ const Agreement = ({ onStart }: AgreementProps) => {
             onChange={handleAgreementChange}
             inputProps={{ 'aria-label': '同義確認' }}
           />
-          <Link href={PAGES.PRIVACY_POLICY} className="blue-text">プライバシーポリシー</Link>同義</Typography>
+          <Link href={PAGES.PRIVACY_POLICY} className="blue-text">プライバシーポリシー</Link>に同意</Typography>
         <CardActions className='button'>
           <AisButton size="large" variant="contained" onClick={handleStart} disabled={!agreed}>
             登録開始

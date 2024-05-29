@@ -42,7 +42,7 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
     visName: yup
       .string()
       .typeError("日本語・ローマ字を使って入力してください。")
-      .matches(/^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF A-Za-z]+$/, "日本語・ローマ字を使って入力してください。")
+      .matches(/^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF A-Za-z\u3000]+$/, "日本語・ローマ字を使って入力してください。")
       .max(256, "256文字までの文字を入力できます。")
       .required("お名前を入力してください。"),
     companyName: yup
