@@ -15,6 +15,7 @@ import { Employee } from 'types/employee'
 import { AisButton, CancleButton, OrangeTextField } from 'styles/muStyle'
 import { useEmployee } from 'hooks'
 import { ITEMS } from 'constant/items'
+import ScrollTop from 'components/organisms/ScrollTop'
 
 interface InputStepProps {
   step: FormStep
@@ -163,74 +164,78 @@ const InputStep = React.forwardRef<HTMLButtonElement, InputStepProps>(({ step, d
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Box>
-        <Grid item xs={12} mt={3}>
-          <Typography variant="h4" sx={{ textAlign: 'center', fontWeight: 'bold', color: '#ff3300' }}>
-            {ITEMS.INPUT.INPUT_BACIC}
-          </Typography>
-        </Grid>
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_NAME}</Typography>
-        <OrangeTextField
-          fullWidth
-          {...register('visName')}
-          error={'visName' in errors}
-          helperText={errors.visName?.message}
-        />
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_COMPANY}</Typography>
-        <OrangeTextField
-          fullWidth
-          {...register('companyName')}
-          error={'companyName' in errors}
-          helperText={errors.companyName?.message}
-        />
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_CONTACT}</Typography>
-        <OrangeTextField
-          fullWidth
-          {...register('tel')}
-          error={'tel' in errors}
-          helperText={errors.tel?.message}
-        />
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_COMPANION}</Typography>
-        <OrangeTextField
-          fullWidth
-          {...register('numberWith')}
-          error={'numberWith' in errors}
-          helperText={errors.numberWith?.message}
-        />
-        <Grid item xs={12} mt={3}>
-          <Typography variant="h4" sx={{ textAlign: 'center', fontWeight: 'bold', color: '#ff3300' }}>
-            {ITEMS.INPUT.INPUT_BUSINESS}
-          </Typography>
-        </Grid>
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_VISITORS}</Typography>
-        <Autocomplete
-          value={comboValue}
-          inputValue={inputValue}
-          onInputChange={handleInputChange}
-          onChange={(event, newValue) => handleOptionSelect(newValue)}
-          options={employeeList}
-          getOptionLabel={(option: Employee) => {
-            const { lastName, firstName, lastKanaName, firstKanaName } = option
-            return `${lastName} ${firstName} (${lastKanaName} ${firstKanaName})`
-          }}
-          renderInput={(params) => <OrangeTextField {...params} />}
-        />
-        <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_BUSINESS}</Typography>
-        <OrangeTextField
-          id="outlined-multiline-static"
-          rows={5}
-          multiline
-          fullWidth
-          {...register('reason')}
-          error={'reason' in errors}
-          helperText={errors.reason?.message}
+      <ScrollTop>
+        <>
+          <Box>
+            <Grid item xs={12} mt={3}>
+              <Typography variant="h4" sx={{ textAlign: 'center', fontWeight: 'bold', color: '#ff3300' }}>
+                {ITEMS.INPUT.INPUT_BACIC}
+              </Typography>
+            </Grid>
+            <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_NAME}</Typography>
+            <OrangeTextField
+              fullWidth
+              {...register('visName')}
+              error={'visName' in errors}
+              helperText={errors.visName?.message}
+            />
+            <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_COMPANY}</Typography>
+            <OrangeTextField
+              fullWidth
+              {...register('companyName')}
+              error={'companyName' in errors}
+              helperText={errors.companyName?.message}
+            />
+            <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_CONTACT}</Typography>
+            <OrangeTextField
+              fullWidth
+              {...register('tel')}
+              error={'tel' in errors}
+              helperText={errors.tel?.message}
+            />
+            <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_COMPANION}</Typography>
+            <OrangeTextField
+              fullWidth
+              {...register('numberWith')}
+              error={'numberWith' in errors}
+              helperText={errors.numberWith?.message}
+            />
+            <Grid item xs={12} mt={3}>
+              <Typography variant="h4" sx={{ textAlign: 'center', fontWeight: 'bold', color: '#ff3300' }}>
+                {ITEMS.INPUT.INPUT_BUSINESS}
+              </Typography>
+            </Grid>
+            <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_VISITORS}</Typography>
+            <Autocomplete
+              value={comboValue}
+              inputValue={inputValue}
+              onInputChange={handleInputChange}
+              onChange={(event, newValue) => handleOptionSelect(newValue)}
+              options={employeeList}
+              getOptionLabel={(option: Employee) => {
+                const { lastName, firstName, lastKanaName, firstKanaName } = option
+                return `${lastName} ${firstName} (${lastKanaName} ${firstKanaName})`
+              }}
+              renderInput={(params) => <OrangeTextField {...params} />}
+            />
+            <Typography variant="h6" sx={{ fontWeight: 'bold', mt: 3, color: '#EEA47F' }}>{ITEMS.INPUT.INPUT_BUSINESS}</Typography>
+            <OrangeTextField
+              id="outlined-multiline-static"
+              rows={5}
+              multiline
+              fullWidth
+              {...register('reason')}
+              error={'reason' in errors}
+              helperText={errors.reason?.message}
 
-        />
-      </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
-        <CancleButton onClick={onCancle} variant="contained">{ITEMS.INPUT.INPUT_CANCEL}</CancleButton>
-        <AisButton type="submit" variant="contained">{ITEMS.INPUT.INPUT_NEXT}</AisButton>
-      </Box>
+            />
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 3 }}>
+            <CancleButton onClick={onCancle} variant="contained">{ITEMS.INPUT.INPUT_CANCEL}</CancleButton>
+            <AisButton type="submit" variant="contained">{ITEMS.INPUT.INPUT_NEXT}</AisButton>
+          </Box>
+        </>
+      </ScrollTop>
     </form>
   )
 })
